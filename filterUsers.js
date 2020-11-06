@@ -47,7 +47,11 @@ function nameORCompetence() {
     document.getElementById("DIVinitialChoice").setAttribute("hidden", "")
 }
 
+
+let printSpace= document.getElementById("show");
+
 function searchByName() {
+    clear(printSpace);
     for (let index = 0; index < users.length; index++) {
         if (users[index].userName.toLowerCase().includes(document.getElementById("nomeCercato").value.toLowerCase())) {
             document.getElementById("show").innerHTML += "<ul><br><li> Nome e Cognome: " + users[index].userName + "</li><br> <li> Competenze: <br> " + printArrayOfObject(users[index].competenceUser) + "</ul><br><br><hr>";
@@ -58,7 +62,7 @@ function searchByName() {
 
 
 function searchByCompetence() {
-
+    clear(printSpace);
     for (let index = 0; index < users.length; index++) {
         for (let index2 = 0; index2 < users[index].competenceUser.length; index2++) {
             let currentCompetence = users[index].competenceUser[index2].nameComp.toLowerCase();
@@ -73,6 +77,7 @@ function searchByCompetence() {
 
 
 function searchByCompetenceAndLevel() {
+    clear(printSpace);
     for (let index = 0; index < users.length; index++) {
         for (let index2 = 0; index2 < users[index].competenceUser.length; index2++) {
             let currentCompetence = users[index].competenceUser[index2].nameComp.toLowerCase();
@@ -95,4 +100,23 @@ function printArrayOfObject(arrOfobj) {
     }
     return output;
 }
+
+function clear(space) {
+
+    space.innerHTML="";
+
+}
+
+function goBack(){
+    clear(printSpace);
+
+    document.getElementById("DIVinitialChoice").removeAttribute("hidden", "")
+    document.getElementById("searchByCompetenceAndLevel").setAttribute("hidden", "");
+    document.getElementById("searchByCompetence").setAttribute("hidden", "");
+    document.getElementById("searchByName").setAttribute("hidden", "");
+
+
+
+}
+
 

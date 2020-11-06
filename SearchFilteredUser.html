@@ -7,14 +7,43 @@
     <title>Show Users</title>
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <style>
-        select{
+        select {
             width: 100;
             padding: 12px 20px;
-            margin:  8px 0;
+            margin: 8px 0;
             display: inline-block;
             border: 1px solid black;
             border-radius: 4px;
             box-sizing: border-box;
+        }
+
+        .greenStandardButton {
+            background-color: blue;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .greenStandardButton.end {
+            background-color: red;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        body{
+            font-style: Arial;
+            font-size: large;
         }
     </style>
 </head>
@@ -43,48 +72,54 @@
         Inserisci nome persona da cercare:
         <input type="text" name="nomeCercato" id="nomeCercato" required> <br>
         <button class="greenStandardButton" id="mostraUtenti" onclick="searchByName()">Avvia Ricerca</button>
+        <button class="greenStandardButton end" id="indietro" onclick="goBack()">Indietro</button>
+
     </div>
     <!-- ------------------------------------------------------------------- -->
 
 
-  <!-- Nel caso venisse effettuatua una ricerca PER COMPETENZA , faccio apparire il sottostante -->
+    <!-- Nel caso venisse effettuatua una ricerca PER COMPETENZA , faccio apparire il sottostante -->
     <div id="searchByCompetence" hidden>
         Inserisci persone con competenza in:
         <input type="text" name="competenzaCercata" id="competenzaCercata" required> <br><br>
         <button class="greenStandardButton" id="mostraUtenti" onclick="searchByCompetence()">Avvia Ricerca</button>
+        <button class="greenStandardButton end" id="indietro" onclick="goBack()">Indietro</button>
+
     </div>
-<!-- ------------------------------------------------------------------- -->
+    <!-- ------------------------------------------------------------------- -->
 
 
- <!-- Nel caso venisse effettuatua una ricerca PER COMPETENZA E LIVELLO , faccio apparire il sottostante -->
-<div id="searchByCompetenceAndLevel" hidden>
-   
- Inserisci persone con competenza in:
- <input type="text" name="competenzaCercata" id="competenzaCercataLivello" required> <br><br>
- 
-Che deve essere di livello almeno:
+    <!-- Nel caso venisse effettuatua una ricerca PER COMPETENZA E LIVELLO , faccio apparire il sottostante -->
+    <div id="searchByCompetenceAndLevel" hidden>
 
-<select class="" name="livelli" id="levels" >
+        Inserisci persone con competenza in:
+        <input type="text" name="competenzaCercata" id="competenzaCercataLivello" required> <br><br>
 
-    <option value="4livello">4 Livello</option>
-    <option value="3livello">3 Livello</option>
-    <option value="2livello">2 Livello</option>
-    <option value="1livello">1 Livello</option>
-    <option value="0livello">0 Livello</option>
+        Che deve essere di livello almeno:
 
-</select>
+        <select class="" name="livelli" id="levels">
 
-<br>
-<button class="greenStandardButton" id="mostraUtenti" onclick="searchByCompetenceAndLevel()">Avvia Ricerca</button>  
+            <option value="4livello">4 Livello</option>
+            <option value="3livello">3 Livello</option>
+            <option value="2livello">2 Livello</option>
+            <option value="1livello">1 Livello</option>
+            <option value="0livello">0 Livello</option>
+
+        </select>
+
+        <br>
+        <button class="greenStandardButton" id="mostraUtenti" onclick="searchByCompetenceAndLevel()">Avvia
+            Ricerca</button>
+
+        <button class="greenStandardButton end" id="indietro" onclick="goBack()">Indietro</button>
+
+    </div>
+
+    <!-- ------------------------------------------------------------------- -->
 
 
-</div>
-    
-<!-- ------------------------------------------------------------------- -->
 
-
-
-<div id="show"></div>
+    <div id="show"></div>
 
 
     <script src="filterUsers.js" type="text/javascript"></script>
