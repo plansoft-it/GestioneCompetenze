@@ -33,6 +33,8 @@ let users = [
 
 
 
+
+
 function nameORCompetence() {
     console.log(document.getElementById("initialChoice").value)
     if (document.getElementById("initialChoice").value == "name") {
@@ -48,7 +50,7 @@ function nameORCompetence() {
 }
 
 
-let printSpace= document.getElementById("show");
+let printSpace = document.getElementById("show");
 
 function searchByName() {
     clear(printSpace);
@@ -84,7 +86,7 @@ function searchByCompetenceAndLevel() {
             let searchedCompetence = document.getElementById("competenzaCercataLivello").value.toLowerCase();
             let levelOfCompetence = users[index].competenceUser[index2].level;
             let searchedLevelOfCompetence = parseInt(document.getElementById("levels").value);
-            if ((currentCompetence == searchedCompetence) && (levelOfCompetence >= searchedLevelOfCompetence) ) { //che mal di testa sa condizione
+            if ((currentCompetence == searchedCompetence) && (levelOfCompetence >= searchedLevelOfCompetence)) { 
                 document.getElementById("show").innerHTML += "<ul><br><li> Nome e Cognome: " + users[index].userName + "</li><br> <li> Competenze: <br> " + printArrayOfObject(users[index].competenceUser) + "</ul><br><br><hr>";
             }
         }
@@ -103,11 +105,11 @@ function printArrayOfObject(arrOfobj) {
 
 function clear(space) {
 
-    space.innerHTML="";
+    space.innerHTML = "";
 
 }
 
-function goBack(){
+function goBack() {
     clear(printSpace);
 
     document.getElementById("DIVinitialChoice").removeAttribute("hidden", "")
