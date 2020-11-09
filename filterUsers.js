@@ -1,4 +1,4 @@
-let users = [
+const users = [
     {
         userName: "Mario Rossi",
         competenceUser: [
@@ -31,94 +31,119 @@ let users = [
     }
 ];
 
+const area=["linguaggi programmazione", "Sistemi operativi"]
 
-
-
-
-function nameORCompetence() {
-    console.log(document.getElementById("initialChoice").value)
-    if (document.getElementById("initialChoice").value == "name") {
-        document.getElementById("searchByName").removeAttribute("hidden", "");
-    } else if (document.getElementById("initialChoice").value == "competenze") {
-        document.getElementById("searchByCompetence").removeAttribute("hidden", "");
-
-    } else if (document.getElementById("initialChoice").value == "competenzeLivello") {
-        document.getElementById("searchByCompetenceAndLevel").removeAttribute("hidden", "");
-
-    }
-    document.getElementById("DIVinitialChoice").setAttribute("hidden", "")
+function getById(id){
+    return document.getElementById(id)
 }
 
+var printSpace = getById("show"); //variabile utilizzata per stampare e cancellare l'output delle ricerche
 
-let printSpace = document.getElementById("show");
+function clear(element) {
+    element.innerHTML = "";
+}
+
+function nameORCompetence() {
+    console.log(getById("initialChoice").value)
+    switch(getById("initialChoice").value){
+        case "name":
+            getById("searchByName").removeAttribute("hidden");
+            break
+        case "competenze":
+            getById("searchByCompetence").removeAttribute("hidden");
+            showCompetence()
+            break
+        case "competenzeLivello":
+            getById("searchByCompetenceAndLevel").removeAttribute("hidden");
+            break
+    }
+    getById("DivScopeChoice").setAttribute("hidden")
+}
 
 function searchByName() {
     clear(printSpace);
-    for (let index = 0; index < users.length; index++) {
-        if (users[index].userName.toLowerCase().includes(document.getElementById("nomeCercato").value.toLowerCase())) {
-            document.getElementById("show").innerHTML += "<ul><br><li> Nome e Cognome: " + users[index].userName + "</li><br> <li> Competenze: <br> " + printArrayOfObject(users[index].competenceUser) + "</ul><br><br><hr>";
+    for (let i = 0; i < users.length; i++) {
+        let condition=users[i].userName.toLowerCase().includes(getById("nomeCercato").value.toLowerCase())
+        if (condition) {
+            getById("show").innerHTML += `
+            <ul><br>
+                <li> Nome e Cognome: ` + users[i].userName + `</li><br>
+                <li> Competenze: <br> ` + printArrayOfObject(users[i].competenceUser) + `
+            </ul><br><br>
+            <hr>`;
         }
     }
 }
 
-
+function showCompetence(){
+    clear(printSpace);
+    for(let i=0;i<area.length;i++){
+        let v=area[i].split(' ')
+        areaValue=v[0]+'_'+v[1]
+        getById("selectArea").innerHTML+='<option id="competenzaCercata" value='+areaValue+'>'+area[i]+'</option>'
+    }
+}
 
 function searchByCompetence() {
-    clear(printSpace);
-    for (let index = 0; index < users.length; index++) {
-        for (let index2 = 0; index2 < users[index].competenceUser.length; index2++) {
-            let currentCompetence = users[index].competenceUser[index2].nameComp.toLowerCase();
-            let searchedCompetence = document.getElementById("competenzaCercata").value.toLowerCase();
-            if (currentCompetence == searchedCompetence) { //che mal di testa sa condizione
-                document.getElementById("show").innerHTML += "<ul><br><li> Nome e Cognome: " + users[index].userName + "</li><br> <li> Competenze: <br> " + printArrayOfObject(users[index].competenceUser) + "</ul><br><br><hr>";
+    for (let i = 0; i < users.length; i++) {
+        const length=users[i].competenceUser.length
+        for (let j = 0; j < length; j++) {
+            let tempComp=getById("competenzaCercata").value;
+            let v=tempComp.split('_')
+            tempComp=v[0]+' '+v[1]
+            const searchedCompetence = tempComp
+            const currentCompetence = users[i].competenceUser[j].area;
+            if (currentCompetence == searchedCompetence) {
+                getById("show").innerHTML += `
+                <ul><br>
+                    <li> Nome e Cognome: ` + users[i].userName + `</li><br>
+                    <li> Competenze: <br> ` + printArrayOfObject(users[i].competenceUser) + `
+                </ul>
+                <br><br><hr>`;
             }
         }
     }
 }
-
-
 
 function searchByCompetenceAndLevel() {
     clear(printSpace);
-    for (let index = 0; index < users.length; index++) {
-        for (let index2 = 0; index2 < users[index].competenceUser.length; index2++) {
-            let currentCompetence = users[index].competenceUser[index2].nameComp.toLowerCase();
-            let searchedCompetence = document.getElementById("competenzaCercataLivello").value.toLowerCase();
-            let levelOfCompetence = users[index].competenceUser[index2].level;
-            let searchedLevelOfCompetence = parseInt(document.getElementById("levels").value);
+    for (let i = 0; i < users.length; i++) {
+    const length=users[i].competenceUser.length
+        for (let j = 0; j < length; j++) {
+            const currentCompetence = users[i].competenceUser[j].nameComp.toLowerCase();
+            const searchedCompetence = getById("competenzaCercataLivello").value.toLowerCase();
+            const levelOfCompetence = users[i].competenceUser[j].level;
+            const searchedLevelOfCompetence = parseInt(getById("levels").value);
             if ((currentCompetence == searchedCompetence) && (levelOfCompetence >= searchedLevelOfCompetence)) { 
-                document.getElementById("show").innerHTML += "<ul><br><li> Nome e Cognome: " + users[index].userName + "</li><br> <li> Competenze: <br> " + printArrayOfObject(users[index].competenceUser) + "</ul><br><br><hr>";
+                getById("show").innerHTML += `
+                <ul><br>
+                    <li> Nome e Cognome: ` + users[i].userName + `</li><br>
+                    <li> Competenze: <br> ` + printArrayOfObject(users[i].competenceUser) + `
+                </ul>
+                <br><br><hr>`;
             }
         }
     }
 }
 
-
-
 function printArrayOfObject(arrOfobj) {
     var output = "";
-    for (let index = 0; index < arrOfobj.length; index++) {
-        output += "<br>  <ul><li>Competenza Conosciuta: " + arrOfobj[index].nameComp + "</li><li>   AreaCompetenza: " + arrOfobj[index].area + "</li><li> Livello Competenza:" + arrOfobj[index].level + "</ul><br><br>";
+    for (let i = 0; i < arrOfobj.length; i++) {
+        output += `<br>
+        <ul>
+            <li> Competenza Conosciuta: ` + arrOfobj[i].nameComp + `</li>
+            <li> AreaCompetenza: ` + arrOfobj[i].area + `</li>
+            <li> Livello Competenza:` + arrOfobj[i].level + `</li>
+        </ul>
+        <br><br>`;
     }
     return output;
 }
 
-function clear(space) {
-
-    space.innerHTML = "";
-
-}
-
 function goBack() {
     clear(printSpace);
-
-    document.getElementById("DIVinitialChoice").removeAttribute("hidden", "")
-    document.getElementById("searchByCompetenceAndLevel").setAttribute("hidden", "");
-    document.getElementById("searchByCompetence").setAttribute("hidden", "");
-    document.getElementById("searchByName").setAttribute("hidden", "");
-
-
-
+    getById("DivScopeChoice").removeAttribute("hidden")
+    getById("searchByCompetenceAndLevel").setAttribute("hidden");
+    getById("searchByCompetence").setAttribute("hidden");
+    getById("searchByName").setAttribute("hidden");
 }
-
-
