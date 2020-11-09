@@ -1,4 +1,4 @@
-let users = [
+const users = [
     {
         userName: "Mario Rossi",
         competenceUser: [
@@ -31,26 +31,32 @@ let users = [
     }
 ];
 
-for (let index = 0; index < users.length; index++) {
-    document.getElementById("show").innerHTML += "<ul>\
-    <br><li> Nome e Cognome: " + users[index].userName + "</li>\
-    <br><li> Competenze: \
-        <br>" + printArrayOfObject(users[index].competenceUser) +
-        "</ul><br><br><hr>";
+for (const user of users) {
+    document.getElementById("show").innerHTML += `
+        <ul><br>
+            <li> Nome e Cognome: ` + user.userName + `</li><br>
+            <li> Competenze: 
+            <br>` + printArrayOfObject(user.competenceUser) +`
+        </ul>
+        <br><br>
+        <hr>`;
 }
 
-function clear(space) {
-    space.innerHTML="";
+function clear(element) {
+    element.innerHTML="";
 }
 
 function printArrayOfObject(arrOfobj) {
-    var output = "";
-    for (let index = 0; index < arrOfobj.length; index++) {
-        output += "<br><ul>\
-        <li>Competenza Conosciuta: "+arrOfobj[index].nameComp + "</li>\
-        <li>AreaCompetenza: "+arrOfobj[index].area+ "</li>\
-        <li>Livello Competenza:"+arrOfobj[index].level+ "</li>\
-        </ul><br><br>";   
+    let output = "";
+    for (const competence of arrOfobj) {
+        output += `
+            <br>
+            <ul>
+                <li>Competenza Conosciuta: `+competence.nameComp + `</li>
+                <li>Area Competenza: `+competence.area+ `</li>
+                <li>Livello Competenza: `+competence.level+ `</li>
+            </ul>
+            <br><br>`;   
     }
     return output;
 }
