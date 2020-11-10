@@ -1,126 +1,122 @@
-var dipendenti=[
-    { 
-        nome: "mario rossi",
-        competenzeAssociate: [
+const userList = [
+    {
+        name: "mario rossi",
+        competenceUser: [
             {
-                nome: 'java',
+                name: 'java',
                 area: 'linguaggi programmazione',
-                livello: 'base'
+                level: 'base'
             },
             {
-                nome: 'Linux',
+                name: 'Linux',
                 area: 'Sistemi operativi',
-                livello: 'intermedio'
+                level: 'intermedio'
             }
         ]
-        },
-        { 
-        nome: "franco verdi",
-        competenzeAssociate: [
+    },
+    {
+        name: "franco verdi",
+        competenceUser: [
             {
-                nome: 'js',
+                name: 'js',
                 area: 'linguaggi programmazione',
-                livello: 'avanzato'
+                level: 'avanzato'
             },
             {
-                nome: 'Windows',
+                name: 'Windows',
                 area: 'Sistemi operativi',
-                livello: 'base'
+                level: 'base'
             }
         ]
     }
 ]
-var tempLivelli=['base', 'intermedio', 'avanzato']
 
-for(let i=0;i<dipendenti.length;i++){
-    document.getElementById("employee").innerHTML+='<option value='+i+'>'+dipendenti[i].nome+'</option>'
+
+for (let i = 0; i < userList.length; i++) {
+    const { name } = userList[i];
+    document.getElementById("employee").innerHTML+=`<option value="${i}"> ${ name } </option>`
+
 }
 
-function showArea(){
-    document.getElementById("area").innerHTML='<option value="" selected="selected" disabled="disabled">Seleziona Area di Competenze</option>'
-    var employee=document.getElementById("employee").value
-    for(let i=0;i<dipendenti[employee].competenzeAssociate.length;i++){
-        document.getElementById("area").innerHTML+='<option value='+i+'>'+dipendenti[employee].competenzeAssociate[i].area+'</option>'
+function showArea() {
+    document.getElementById("area").innerHTML = '<option value="" selected="selected" disabled="disabled">Seleziona Area di Competenze</option>'
+    const employee = document.getElementById("employee").value
+    const comp = userList[employee].competenceUser
+    for (let i = 0; i < comp.length; i++) {
+        document.getElementById("area").innerHTML += '<option value=' + i + '>' + userList[employee].competenceUser[i].area + '</option>'
     }
 }
 
-function showSkill(){
-    document.getElementById("skill").innerHTML='<option value="" selected="selected" disabled="disabled">Seleziona Competenza</option>'
-    var employee=document.getElementById("employee").value
-    var area=document.getElementById("area").value
-    for(let i=0;i<dipendenti[employee].competenzeAssociate.length;i++){
-        if(dipendenti[employee].competenzeAssociate[i].area==dipendenti[employee].competenzeAssociate[area].area){
-            document.getElementById("skill").innerHTML+='<option value='+i+'>'+dipendenti[employee].competenzeAssociate[i].nome+'</option>'
+function showSkill() {
+    document.getElementById("skill").innerHTML = '<option value="" selected="selected" disabled="disabled">Seleziona Competenza</option>'
+    const employee = document.getElementById("employee").value
+    const area = document.getElementById("area").value
+    const comp = userList[employee].competenceUser
+    for (let i = 0; i < comp.length; i++) {
+        if (userList[employee].competenceUser[i].area == userList[employee].competenceUser[area].area) {
+            document.getElementById("skill").innerHTML += '<option value=' + i + '>' + userList[employee].competenceUser[i].name + '</option>'
         }
     }
 }
-/*
-function showSkillnoArea(){
-    document.getElementById("skill").innerHTML='<option value="" selected="selected" disabled="disabled">Seleziona Competenza</option>'
-    var employee=document.getElementById("employee").value
-    for(let i=0;i<dipendenti[employee].competenzeAssociate.length;i++){
-        document.getElementById("skill").innerHTML+='<option value='+i+'>'+dipendenti[employee].competenzeAssociate[i].nome+'</option>'
+
+function addEmployee() {
+    const nameEmp = document.getElementById("nameEmp").value
+    if (nameEmp != '') {
+        userList.push(nameEmp)
+        document.getElementById("demo").innerHTML = nameEmp + ' aggiunto.'
+        console.log(userList)
+    } else {
+        document.getElementById("demo").innerHTML = 'Inserisci nome e cognome'
     }
 }
-*/
-function addEmployee(){
-    var nomeEmp=document.getElementById("nomeEmp").value
-    if(nomeEmp!=''){
-        dipendenti.push(nomeEmp)
-        document.getElementById("demo").innerHTML=nomeEmp+' aggiunto.'
-        console.log(dipendenti)
-    }else{
-        document.getElementById("demo").innerHTML='Inserisci nome e cognome'
-    }    
-}
 
-function showSkillLvl(){
-    var employee=document.getElementById("employee").value
-    var skill=document.getElementById("skill").value
-    document.getElementById("text").innerHTML=dipendenti[employee].competenzeAssociate[skill].nome+' - livello: '
+function showSkillLvl() {
+    const employee = document.getElementById("employee").value
+    const skill = document.getElementById("skill").value
+    document.getElementById("text").innerHTML = userList[employee].competenceUser[skill].name + ' - livello: '
 
     document.getElementById("level").removeAttribute("hidden")
-    
-    var level=dipendenti[employee].competenzeAssociate[skill].livello
-    document.getElementById("level").innerHTML='<option disabled="disabled">Seleziona nuovo Livello</option>'
-    document.getElementById("level").innerHTML+='<option id="base" value="base">Base</option>'
-    document.getElementById("level").innerHTML+='<option id="intermedio" value="intermedio">Intermedio</option>'        //temporaneo
-    document.getElementById("level").innerHTML+='<option id="avanzato" value="avanzato">Avanzato</option>'
-    switch(level){
+
+    var level = userList[employee].competenceUser[skill].level
+    document.getElementById("level").innerHTML = '<option disabled="disabled">Seleziona nuovo Livello</option>'
+    document.getElementById("level").innerHTML += '<option id="base" value="base">Base</option>'
+    document.getElementById("level").innerHTML += '<option id="intermedio" value="intermedio">Intermedio</option>'        //temporaneo
+    document.getElementById("level").innerHTML += '<option id="avanzato" value="avanzato">Avanzato</option>'
+    switch (level) {
         case 'base':
-            document.getElementById("base").setAttribute("selected","selected")
+            document.getElementById("base").setAttribute("selected", "selected")
             document.getElementById("base").setAttribute("disabled", "disabled")
             break
         case 'intermedio':
-            document.getElementById("intermedio").setAttribute("selected","selected")
+            document.getElementById("intermedio").setAttribute("selected", "selected")
             document.getElementById("intermedio").setAttribute("disabled", "disabled")
             break
         case 'avanzato':
-            document.getElementById("avanzato").setAttribute("selected","selected")
+            document.getElementById("avanzato").setAttribute("selected", "selected")
             document.getElementById("avanzato").setAttribute("disabled", "disabled")
             break
     }
     document.getElementById("confermaModSkill").removeAttribute("hidden")
 }
 
-function modifySkill(){
-    var employee=document.getElementById("employee").value
-    var skill=document.getElementById("skill").value
-    var level=document.getElementById("level").value
-    dipendenti[employee].competenzeAssociate[skill].livello=level
-    console.log(dipendenti)
+function modifySkill() {
+    const employee = document.getElementById("employee").value
+    const skill = document.getElementById("skill").value
+    const level = document.getElementById("level").value
+    userList[employee].competenceUser[skill].level = level
+    console.log(userList)
 }
 
-function addSkill(){
-    var employee=document.getElementById("employee").value
-    var nomeSkill=document.getElementById("nomeSkill").value
-    if(employee==''){
-        document.getElementById("demo").innerHTML='Inserisci dipendente'
-    }else if(nomeSkill!=''){
-        dipendenti[employee].competenzeAssociate.push(nomeSkill)
-        document.getElementById("demo").innerHTML=nomeSkill+' aggiunto.'
-        console.log(dipendenti)
-    }else{
-        document.getElementById("demo").innerHTML='Inserisci competenza'
-    }    
+function addSkill() {
+    const employee = document.getElementById("employee").value
+    const nameSkill = document.getElementById("inputNameSkill").value
+    if (employee == '') {
+        document.getElementById("demo").innerHTML = 'Inserisci dipendente'
+    } else if (nameSkill != '') {
+        userList[employee].competenceUser.push(nameSkill)
+        document.getElementById("demo").innerHTML = nameSkill + ' aggiunto.'
+        console.log(userList)
+    } else {
+        document.getElementById("demo").innerHTML = 'Inserisci competenza'
+    }
 }
