@@ -64,7 +64,6 @@ function addEmployee() {
     if (nameEmp != '') {
         userList.push(nameEmp)
         document.getElementById("demo").innerHTML = nameEmp + ' aggiunto.'
-        console.log(userList)
     } else {
         document.getElementById("demo").innerHTML = 'Inserisci nome e cognome'
     }
