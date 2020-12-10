@@ -34,7 +34,7 @@ const userList = [
 
 for (let i = 0; i < userList.length; i++) {
     const { name } = userList[i];
-    document.getElementById("employee").innerHTML+=`<option value="${i}"> ${ name } </option>`
+    document.getElementById("employee").innerHTML += `<option value="${i}"> ${ name } </option>`;
 
 }
 
