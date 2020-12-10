@@ -1,14 +1,58 @@
 # Gestione Competenze
 
-L'azienda PS vuole un portale in cui poter gestire le competenze dei suoi dipendenti:
+Viene richiesta la creazione di un portale per le gestione delle competenze dei dipendenti di PS. Tramite questo portale si avrà la possibilità di effettuare:
 
-  - Visualizzazione delle competenze associate a un profilo
-  - Inserimento e modifica delle competenze di un profilo
-  - Ricerca di uno specifico profilo filtrando attraverso nome/cognome o in base alle competenze
+  - Visualizzazione delle competenze associate ad un dipendente
+  - Inserimento e modifica delle competenze di un dipendente
+  - Ricerca di uno specifico dipendente filtrando attraverso nome/cognome o in base alle competenze
 
-Ad ogni profilo è associato un nome, un cognome e una lista di competenze a cui associare un determinato livello.
+Ad ogni dipendente è associato: nome, cognome , un id identificativo e una lista di competenze con associato il livello della suddetta competenza.
 
-Ogni competenza fa parte di un'area di competenza, per esempio la competenza *javascript* fa parte dell'area di competenza *linguaggi di programmazione*.
+##Tecnologie/Linguaggi Utilizzati
 
-Nella home page deve essere presente: una barra di navigazione (navbar) e deve avere un contenuto che permetta di navigare nel sito.
+##Front End:
+-[HTML5](#html5)
+-[JS](#js)
+-[CSS](#css)
+-[Angular](#angular)
+
+### HTML5 
+
+E' stato utilizzato per il prototipo per il progetto, per fare una parte delle  delle pagine in maniera statica. Inoltre viene utilizzato anche nella versione 1.0.0 zero del progetto, sempre con lo stesso scopo ma in maniera differente
+
+Per la sua documentazione visita [questo sito](https://developer.mozilla.org/en-US/docs/Web/HTML)
+
+### JS
+
+Anche JS, come HTML , è stato utilizzato per fare la prima bozza del del progetto. Verrà poi rimpiazzato con Typescript in mondo da poter lavorare con angular un maniera ottimale. 
+
+Per la documentazione o per trovare informazioni riguardanti il sudetto linguaggio, visita [questo sito](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+
+### CSS
+
+CSS è stato utilizzato, e continuerà nel corso del progetto come foglio di stile del progetto, per "abbellire" le pagine.
+
+Per informazioni riguardo CSS visita [questo sito](https://developer.mozilla.org/en-US/docs/Web/CSS)
+
+### Angular
+
+Strumento essenziale per la versione 1.0.0 del progetto; Per utilizzare Angular è necessario conoscere [Typescript](https://www.typescriptlang.org/). Il progetto precedentemente scritto sotto forma di bozza viene portato infatti su Angular.
+La versione di  Angular adoprata è la 11.
+
+Per informazioni, Tutorial e documentazione di Angular visita il [sito ufficiale](https://angular.io/docs)
+
+#### Installare Angular 
+
+Per poter insallare e iniziare a lavorare su angular è necessario installare [Node.js](https://nodejs.org/en/) , preferibilmente l'ultima versione stabile (LTS), è inoltre necessario l'"npm package manager" , che dovrebbe comunque essere installato insieme a Node.js, per controllare se sul tuo computer è installato il client aprila la console (cmd) e scrivi `npm -v` , qualora ci fossero problemi, visita il [sito ufficiale di npm](https://docs.npmjs.com/about-npm)
+
+In fine , dopo questi passaggi puoi aprire la console di comando e scrivere `npm install -g @angular/cli` per effettuare l'installazione di Angular
+
+
+
+Java 
+Spring Tool Suite
+Postman
+Maven
+
+
 
