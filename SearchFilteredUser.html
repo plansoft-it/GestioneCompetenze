@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+    <div id="DivScopeChoice">Cerca Utente/i tramite:
+        <select name="initialChoice" id="initialChoice">
+            <option value="name">Nome</option>
+            <option value="competenze">Competenza</option>
+            <option value="competenzeLivello">Competenza e Livello</option>
+        </select>
+        <button class="blueStandardButton" id="mostraUtenti" onclick="nameORCompetence()">Conferma</button>
+    </div>
+
+    <!-- Nel caso venisse effettuata una ricerca PER NOME , faccio apparire il blocco sottostante -->
+    <div id="searchByName" hidden>
+        Inserisci il nome della persona da cercare:
+        <input type="text" name="nomeCercato" id="nomeCercato" required> <br>
+        <button class="blueStandardButton" id="mostraUtenti" onclick="searchByName()">Avvia Ricerca</button>
+        <button class="redStandardButton" id="indietro" onclick="goBack()">Indietro</button>
+    </div>
+    <!-- ------------------------------------------------------------------- -->
+
+    <!-- Nel caso venisse effettuata una ricerca PER COMPETENZA , faccio apparire il blocco sottostante -->
+    <div id="searchByCompetence" hidden>
+        Ricerca persone con competenza in:
+        <select id="selectArea"></select>
+        <button class="blueStandardButton" id="mostraUtenti" onclick="searchByCompetence()">Avvia Ricerca</button>
+        <button class="redStandardButton" id="indietro" onclick="goBack()">Indietro</button>
+    </div>
+    <!-- ------------------------------------------------------------------- -->
+
+    <!-- Nel caso venisse effettuata una ricerca PER COMPETENZA E LIVELLO , faccio apparire il blocco sottostante -->
+    <div id="searchByCompetenceAndLevel" hidden>
+        Ricerca persone con competenza in:
+        <input type="text" name="competenzaCercata" id="competenzaCercataLivello" required> <br><br>
+        Che deve essere di livello almeno:
+        <select class="" name="livelli" id="levels">
+            <option value="4livello">Alto</option>
+            <option value="3livello">Buono</option>
+            <option value="2livello">Medio</option>
+            <option value="1livello">Basso</option>
+            <option value="0livello">Senza Esperienza </option>
+        </select>
+        <br>
+        <button class="blueStandardButton" id="mostraUtenti" onclick="searchByCompetenceAndLevel()">Avvia
+            Ricerca</button>
+
+        <button class="redStandardButton" id="indietro" onclick="goBack()">Indietro</button>
+    </div>
+    <!-- ------------------------------------------------------------------- -->
+    <div id="show"></div>
+    <script type="text/javascript" src="filterUsers.js"></script>
+</body>
+</html>
