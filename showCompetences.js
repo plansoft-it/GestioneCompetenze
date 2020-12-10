@@ -1,6 +1,6 @@
 const users = [
     {
-        userName: "Mario Rossi",
+        userName: 'Mario Rossi',
         competenceUser: [
             {
                 nameComp: 'java',
@@ -15,7 +15,7 @@ const users = [
         ]
     },
     {
-        userName: "Franco Verdi",
+        userName: 'Franco Verdi',
         competenceUser: [
             {
                 nameComp: 'js',
@@ -32,31 +32,32 @@ const users = [
 ];
 
 for (const user of users) {
-    document.getElementById("show").innerHTML += `
-        <ul><br>
-            <li> Nome e Cognome: ` + user.userName + `</li><br>
-            <li> Competenze: 
-            <br>` + printArrayOfObject(user.competenceUser) +`
-        </ul>
-        <br><br>
+    document.getElementById('show').innerHTML += `
+            <ul>
+                <br/>
+                <li> Nome e Cognome: ${ user.userName } </li><br/>
+                <li> Competenze: <br/>
+                ${ printArrayOfObject(user.competenceUser) } </li>
+            </ul>
+        <br/><br/>
         <hr>`;
 }
 
 function clear(element) {
-    element.innerHTML="";
+    element.innerHTML='';
 }
 
 function printArrayOfObject(arrOfobj) {
-    let output = "";
+    let output = '';
     for (const competence of arrOfobj) {
         output += `
-            <br>
+            <br/>
             <ul>
-                <li>Competenza Conosciuta: `+competence.nameComp + `</li>
-                <li>Area Competenza: `+competence.area+ `</li>
-                <li>Livello Competenza: `+competence.level+ `</li>
+                <li>Competenza Conosciuta: ${ competence.nameComp } </li>
+                <li>Area Competenza: ${ competence.area } </li>
+                <li>Livello Competenza: ${ competence.level } </li>
             </ul>
-            <br><br>`;   
+            <br/><br/>`;   
     }
     return output;
 }
