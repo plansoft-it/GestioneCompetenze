@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Aggiungi Competenza</title>
+        <meta charset="UTF-8">
+        <meta name="author" content="Leonardo Morganti">
+        <meta name="description" content="Gestione Competenze">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td><a href=modifica.html><button type=button>Go back</button></a></td></td>
+            </tr>
+            <tr>
+                <td><select width name="employee" id="employee">
+                    <option value="" selected="selected" disabled="disabled" >Seleziona Dipendente</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="inputNameSkill" id="inputNameSkill" placeholder="nuova competenza"></td>
+            </tr>
+            <tr>
+                <td><button type="button" id= "button" onClick="addSkill()" >Conferma</button></td>
+            </tr>
+            <tr>
+                <td><p id="demo"></p></td>
+            </tr> 
+        </table>
+    <script src="edit.js" type="text/javascript"></script>
+    </body>
+</html>
