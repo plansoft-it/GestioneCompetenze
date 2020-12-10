@@ -8,13 +8,13 @@ Viene richiesta la creazione di un portale per le gestione delle competenze dei 
 
 Ad ogni dipendente è associato: nome, cognome , un id identificativo e una lista di competenze con associato il livello della suddetta competenza.
 
-##Tecnologie/Linguaggi Utilizzati
+#Tecnologie/Linguaggi Utilizzati
 
-##Front End:
--[HTML5](#html5)
--[JS](#js)
--[CSS](#css)
--[Angular](#angular)
+###Front End:
+- [HTML5](#html5)
+- [JS](#js)
+- [CSS](#css)
+- [Angular](#angular)
 
 ### HTML5 
 
