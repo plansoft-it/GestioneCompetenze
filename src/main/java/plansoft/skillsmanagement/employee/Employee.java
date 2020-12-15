@@ -16,10 +16,10 @@ public class Employee {
 	public Employee() {
 
 	}
-	public Employee(String id, String nome, String cognome) {
+	public Employee(String id, String name, String surname) {
 		this.id = id;
-		this.name = nome;
-		this.surname = cognome;
+		this.name = name;
+		this.surname = surname;
 	}
 	public String getId() {
 		return id;
@@ -30,14 +30,14 @@ public class Employee {
 	public String getNome() {
 		return name;
 	}
-	public void setNome(String nome) {
-		this.name = nome;
+	public void setNome(String name) {
+		this.name = name;
 	}
 	public String getCognome() {
 		return surname;
 	}
-	public void setCognome(String cognome) {
-		this.surname = cognome;
+	public void setCognome(String surname) {
+		this.surname = surname;
 	}
 	
 	
