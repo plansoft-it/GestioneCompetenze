@@ -1,4 +1,4 @@
-package plansoft.gestionecompetenze.area;
+package plansoft.skillsmanagement.area;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +13,10 @@ public class AreaService {
 	@Autowired
 	private AreaRepository areaRepository;
 
-	public List<Area> getAree() {
-		List<Area> aree = new ArrayList<>();
-		areaRepository.findAll().forEach(aree::add);
-		return aree;
+	public List<Area> getAreas() {
+		List<Area> areas = new ArrayList<>();
+		areaRepository.findAll().forEach(areas::add);
+		return areas;
 	}
 
 	public Optional<Area> getArea(int id) {

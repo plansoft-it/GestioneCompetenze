@@ -1,4 +1,4 @@
-package plansoft.gestionecompetenze.area;
+package plansoft.skillsmanagement.area;
 
 import org.springframework.data.repository.CrudRepository;
 

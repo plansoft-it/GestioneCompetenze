@@ -1,4 +1,4 @@
-package plansoft.gestionecompetenze.area;
+package plansoft.skillsmanagement.area;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,27 +16,27 @@ public class AreaController {
 	@Autowired
 	private AreaService areaService;
 	
-	@RequestMapping("/aree")
-	public List<Area> getAree() {
-		return areaService.getAree();
+	@RequestMapping("/areas")
+	public List<Area> getAreas() {
+		return areaService.getAreas();
 	}
 	
-	@RequestMapping("/aree/{id}")
+	@RequestMapping("/areas/{id}")
 	public Optional<Area> getArea(@PathVariable int id) {
 		return areaService.getArea(id);
 	}
 	
-	@RequestMapping(method = RequestMethod.POST, value = "/aree")
+	@RequestMapping(method = RequestMethod.POST, value = "/areas")
 	public void addArea(@RequestBody Area area) {
 		areaService.addArea(area);
 	}
 	
-	@RequestMapping(method = RequestMethod.PUT, value = "/aree/{id}")
+	@RequestMapping(method = RequestMethod.PUT, value = "/areas/{id}")
 	public void updateArea(@RequestBody Area area, @PathVariable int id) {
 		areaService.updateArea(area, id);
 	}
 	
-	@RequestMapping(method = RequestMethod.DELETE, value = "/aree/{id}")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/areas/{id}")
 	public void deleteArea(@PathVariable int id) {
 		areaService.deleteArea(id);
 	}
