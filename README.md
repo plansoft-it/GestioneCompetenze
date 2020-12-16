@@ -1,16 +1,16 @@
 # Gestione Competenze
 
-Viene richiesta la creazione di un portale per le gestione delle competenze dei dipendenti di PS. Tramite questo portale si avrà la possibilità di effettuare:
+Viene richiesta la creazione di un portale per la gestione delle competenze dei dipendenti di PS. Tramite questo portale si avrà la possibilità di effettuare:
 
   - Visualizzazione delle competenze associate ad un dipendente
   - Inserimento e modifica delle competenze di un dipendente
   - Ricerca di uno specifico dipendente filtrando attraverso nome/cognome o in base alle competenze
 
-Ad ogni dipendente è associato: nome, cognome , un id identificativo e una lista di competenze con associato il livello della suddetta competenza.
+Ad ogni dipendente è associato: nome , cognome, un id identificativo e una lista di competenze con associato il livello della suddetta competenza.
 
-#Tecnologie/Linguaggi Utilizzati
+## Tecnologie/Linguaggi Utilizzati
 
-###Front End:
+## Front End:
 - [HTML5](#html5)
 - [JS](#js)
 - [CSS](#css)
@@ -26,29 +26,29 @@ Per la sua documentazione visita [questo sito](https://developer.mozilla.org/en-
 
 Anche JS, come HTML , è stato utilizzato per fare la prima bozza del del progetto. Verrà poi rimpiazzato con Typescript in mondo da poter lavorare con angular un maniera ottimale. 
 
-Per la documentazione o per trovare informazioni riguardanti il sudetto linguaggio, visita [questo sito](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+Per la documentazione o per trovare informazioni riguardanti il suddetto linguaggio, visita [questo sito](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 ### CSS
 
-CSS è stato utilizzato, e continuerà nel corso del progetto come foglio di stile del progetto, per "abbellire" le pagine.
+CSS è utilizzato nel corso dello sviluppo come foglio di stile del progetto,ha la funzione di stilizzare le pagine.
 
 Per informazioni riguardo CSS visita [questo sito](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
 ### Angular
 
 Strumento essenziale per la versione 1.0.0 del progetto; Per utilizzare Angular è necessario conoscere [Typescript](https://www.typescriptlang.org/). Il progetto precedentemente scritto sotto forma di bozza viene portato infatti su Angular.
-La versione di  Angular adoprata è la 11.
+La versione di  Angular adottata è la 11.
 
 Per informazioni, Tutorial e documentazione di Angular visita il [sito ufficiale](https://angular.io/docs)
 
 #### Installare Angular 
 
-Per poter insallare e iniziare a lavorare su angular è necessario installare [Node.js](https://nodejs.org/en/) , preferibilmente l'ultima versione stabile (LTS), è inoltre necessario l'"npm package manager" , che dovrebbe comunque essere installato insieme a Node.js, per controllare se sul tuo computer è installato il client aprila la console (cmd) e scrivi `npm -v` , qualora ci fossero problemi, visita il [sito ufficiale di npm](https://docs.npmjs.com/about-npm)
+Per poter installare e iniziare a lavorare su angular è necessario installare [Node.js](https://nodejs.org/en/) , preferibilmente l'ultima versione stabile (LTS), è inoltre necessario l'npm package manager , che dovrebbe comunque essere installato insieme a Node.js, per controllare se sul tuo computer è installato il client aprila la console (cmd) e scrivi `npm -v` , qualora ci fossero problemi, visita il [sito ufficiale di npm](https://docs.npmjs.com/about-npm)
 
-In fine , dopo questi passaggi puoi aprire la console di comando e scrivere `npm install -g @angular/cli` per effettuare l'installazione di Angular
+Infine , dopo questi passaggi puoi aprire la console di comando e scrivere `npm install -g @angular/cli` per effettuare l'installazione di Angular
 
 
-
+TODO:
 Java 
 Spring Tool Suite
 Postman
