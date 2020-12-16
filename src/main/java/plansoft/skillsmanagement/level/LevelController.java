@@ -12,34 +12,31 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class LevelController {
-	
+
 	@Autowired
 	private LevelService levelService;
-	
-	
+
 	@RequestMapping("/levels")
-	public List<Level> getAllLevels(){
+	public List<Level> getAllLevels() {
 		return levelService.getAllLevels();
 	}
-	
+
 	@RequestMapping("/levels/{id}")
 	public Optional<Level> getLevel(@PathVariable String id) {
 		return levelService.getLevel(id);
 	}
-	
-	
-	@RequestMapping(method= RequestMethod.POST, value="/levels")
+
+	@RequestMapping(method = RequestMethod.POST, value = "/levels")
 	public void addLevel(@RequestBody Level level) {
 		levelService.addLevel(level);
 	}
 
-	
-	@RequestMapping(method= RequestMethod.PUT, value="/levels/{id}")
+	@RequestMapping(method = RequestMethod.PUT, value = "/levels/{id}")
 	public void updateLevel(@RequestBody Level level, @PathVariable String id) {
-		levelService.updateLevel(level,id);
+		levelService.updateLevel(level, id);
 	}
-	
-	@RequestMapping(method= RequestMethod.DELETE,value="/levels/{id}")
+
+	@RequestMapping(method = RequestMethod.DELETE, value = "/levels/{id}")
 	public void deleteLevel(@PathVariable String id) {
 		levelService.deleteLevel(id);
 	}

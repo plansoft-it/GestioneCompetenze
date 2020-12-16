@@ -9,14 +9,13 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class LevelService {
-	
+
 	@Autowired
-	private LevelRepository levelRepository; 
+	private LevelRepository levelRepository;
 
 	public List<Level> getAllLevels() {
-		List<Level> levels=new ArrayList<>();
-		levelRepository.findAll()
-		.forEach(levels::add);
+		List<Level> levels = new ArrayList<>();
+		levelRepository.findAll().forEach(levels::add);
 		return levels;
 	}
 
@@ -26,23 +25,19 @@ public class LevelService {
 
 	public void addLevel(Level level) {
 		levelRepository.save(level);
-		
+
 	}
 
 	public void updateLevel(Level level, String id) {
-		if(levelRepository.existsById(id)) {
+		if (levelRepository.existsById(id)) {
 			levelRepository.deleteById(id);
 			levelRepository.save(level);
 		}
-		
+
 	}
 
 	public void deleteLevel(String id) {
 		levelRepository.deleteById(id);
 	}
-	
-	
-	
-	
 
 }
