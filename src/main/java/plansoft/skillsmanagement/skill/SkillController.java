@@ -33,4 +33,15 @@ public class SkillController {
 		skill.setArea((new Area(areasId, "")));
 		skillService.addSkill(skill);
 	}
+	
+	@RequestMapping(method = RequestMethod.PUT, value = "/areas/{areasId}/skills/{id}")
+	public void updateSkill(@RequestBody Skill skill, @PathVariable int areasId, @PathVariable int id) {
+		skill.setArea((new Area(areasId, "")));
+		skillService.updateSkill(skill, id);
+	}
+	
+	@RequestMapping(method = RequestMethod.DELETE, value = "/areas/{areasId}/skills/{id}")
+	public void deleteSkill(@PathVariable int areasId, @PathVariable int id) {
+		skillService.deleteSkill(id);
+	}
 }

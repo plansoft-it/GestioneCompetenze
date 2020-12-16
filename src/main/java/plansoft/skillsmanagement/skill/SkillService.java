@@ -26,6 +26,12 @@ public class SkillService {
 	public void addSkill(Skill skill) {
 		skillRepository.save(skill);
 	}
-	
-	
+
+	public void updateSkill(Skill skill, int id) {
+		skillRepository.save(skill);
+	}
+
+	public void deleteSkill(int id) {
+		skillRepository.deleteById(id);
+	}
 }
