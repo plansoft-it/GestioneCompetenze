@@ -9,16 +9,15 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class EmployeeService {
-	
+
 	@Autowired
 	private EmployeeRepository employeeRepository;
 
 	public List<Employee> getAllEmployees() {
-		List<Employee> employees=new ArrayList<>();
-		employeeRepository.findAll()
-		.forEach(employees::add);
+		List<Employee> employees = new ArrayList<>();
+		employeeRepository.findAll().forEach(employees::add);
 		return employees;
-		
+
 	}
 
 	public Optional<Employee> getEmployee(String id) {
@@ -27,21 +26,19 @@ public class EmployeeService {
 
 	public void addEmployee(Employee employee) {
 		employeeRepository.save(employee);
-		
+
 	}
 
 	public void updateEmployee(Employee employee, String id) {
-		if(employeeRepository.existsById(id)) {
+		if (employeeRepository.existsById(id)) {
 			employeeRepository.deleteById(id);
 			employeeRepository.save(employee);
 		}
-		
+
 	}
 
 	public void deleteEmployee(String id) {
 		employeeRepository.deleteById(id);
 	}
 
-	
-	
 }
