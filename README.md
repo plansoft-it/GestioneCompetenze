@@ -6,7 +6,7 @@ Viene richiesta la creazione di un portale per la gestione delle competenze dei 
   - Inserimento e modifica delle competenze di un dipendente
   - Ricerca di uno specifico dipendente filtrando attraverso nome/cognome o in base alle competenze
 
-Ad ogni dipendente è associato: nome, cognome, un id identificativo e una lista di competenze con associata ad ognuna l'area tecnica di cui fa parte , e il livello di conoscenza della specifica competenza.
+Ad ogni dipendente è associato: nome, cognome, un id identificativo e una lista di competenze con associata ad ognuna l'area tecnica di cui fa parte, e il livello di conoscenza della specifica competenza.
 
 ## Tecnologie/Linguaggi Utilizzati
 
@@ -18,7 +18,7 @@ Ad ogni dipendente è associato: nome, cognome, un id identificativo e una lista
 
 ### HTML5 
 
-E' stato utilizzato per il prototipo per il progetto, per fare una parte  delle pagine in maniera statica. Inoltre viene utilizzato anche nella versione 1.0.0  del progetto, sempre con lo stesso scopo ma in maniera differente
+E' stato utilizzato per il prototipo per il progetto, per fare una parte delle pagine in maniera statica. Inoltre viene utilizzato anche nella versione 1.0.0 del progetto, sempre con lo stesso scopo ma in maniera differente
 
 Per la sua documentazione visita [questo sito](https://developer.mozilla.org/en-US/docs/Web/HTML)
 
@@ -30,7 +30,7 @@ Per la documentazione o per trovare informazioni riguardanti il suddetto linguag
 
 ### CSS
 
-CSS è utilizzato nel corso dello sviluppo come foglio di stile del progetto, ha la funzione di stilizzare le pagine.
+CSS è utilizzato nel corso dello sviluppo come foglio di stile del progetto.
 
 Per informazioni riguardo CSS visita [questo sito](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
