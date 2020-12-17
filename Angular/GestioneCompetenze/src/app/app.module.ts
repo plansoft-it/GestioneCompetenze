@@ -5,16 +5,23 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DipendentiComponent } from './dipendenti/dipendenti.component';
+import { RicercaComponent } from './ricerca/ricerca.component';
+
+import { FormsModule } from '@angular/forms'; //per il select
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    DipendentiComponent
+    DipendentiComponent,
+    RicercaComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
