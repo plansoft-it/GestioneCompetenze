@@ -20,7 +20,7 @@ public class EmployeeService {
 
 	}
 
-	public Optional<Employee> getEmployee(String id) {
+	public Optional<Employee> getEmployee(int id) {
 		return employeeRepository.findById(id);
 	}
 
@@ -29,7 +29,7 @@ public class EmployeeService {
 
 	}
 
-	public void updateEmployee(Employee employee, String id) {
+	public void updateEmployee(Employee employee, int id) {
 		if (employeeRepository.existsById(id)) {
 			employeeRepository.deleteById(id);
 			employeeRepository.save(employee);
@@ -37,7 +37,7 @@ public class EmployeeService {
 
 	}
 
-	public void deleteEmployee(String id) {
+	public void deleteEmployee(int id) {
 		employeeRepository.deleteById(id);
 	}
 
