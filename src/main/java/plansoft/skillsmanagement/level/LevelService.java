@@ -19,7 +19,7 @@ public class LevelService {
 		return levels;
 	}
 
-	public Optional<Level> getLevel(String id) {
+	public Optional<Level> getLevel(int id) {
 		return levelRepository.findById(id);
 	}
 
@@ -28,7 +28,7 @@ public class LevelService {
 
 	}
 
-	public void updateLevel(Level level, String id) {
+	public void updateLevel(Level level, int id) {
 		if (levelRepository.existsById(id)) {
 			levelRepository.deleteById(id);
 			levelRepository.save(level);
@@ -36,7 +36,7 @@ public class LevelService {
 
 	}
 
-	public void deleteLevel(String id) {
+	public void deleteLevel(int id) {
 		levelRepository.deleteById(id);
 	}
 

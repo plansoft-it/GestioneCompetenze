@@ -22,7 +22,7 @@ public class LevelController {
 	}
 
 	@RequestMapping("/levels/{id}")
-	public Optional<Level> getLevel(@PathVariable String id) {
+	public Optional<Level> getLevel(@PathVariable int id) {
 		return levelService.getLevel(id);
 	}
 
@@ -32,12 +32,12 @@ public class LevelController {
 	}
 
 	@RequestMapping(method = RequestMethod.PUT, value = "/levels/{id}")
-	public void updateLevel(@RequestBody Level level, @PathVariable String id) {
+	public void updateLevel(@RequestBody Level level, @PathVariable int id) {
 		levelService.updateLevel(level, id);
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE, value = "/levels/{id}")
-	public void deleteLevel(@PathVariable String id) {
+	public void deleteLevel(@PathVariable int id) {
 		levelService.deleteLevel(id);
 	}
 }
