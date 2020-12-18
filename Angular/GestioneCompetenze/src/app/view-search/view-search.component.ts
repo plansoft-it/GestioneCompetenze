@@ -35,22 +35,36 @@ export class ViewSearchComponent implements OnInit {
   }
 
 
-  ///DA SISTEMARE CHECKCOMPETENCE
-  checkCompetence(option: string, emp, searchedValue: string): boolean {
+  
+  checkCompetence(option: string, emp, searchedValue: string, index1): boolean {
     emp = DIPENDENTI;
     
     if (option == 'knownCompetences') {
-      for (let index1 = 0; index1 < emp.length; index1++) {
+      
         for (let index = 0; index < emp[index1].competenceUser.length; index++) {
           if (emp[index1].competenceUser[index].nameComp.toLocaleLowerCase().includes(searchedValue)) {
             return true;
-          };
-          return false;
+          }
+         
 
         }
-      }
+      
     }
     return false;
   }
+
+
+  ///DA SISTEMARE 
+checkAreaCompetence(arrayArea, searchedValue:string): boolean{
+  arrayArea = COMPETENZE;
+  for (let index = 0; index < arrayArea.competencesForArea.length; index++) {
+    if(arrayArea.competencesForArea[index]==searchedValue){
+      return true; 
+    }
+    
+  }
+  return false;
+}
+
 
 }

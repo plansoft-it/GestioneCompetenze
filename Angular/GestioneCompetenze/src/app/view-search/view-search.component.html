@@ -18,9 +18,10 @@
 
     <ul>
         <ng-container *ngFor="let emp of employees; let i=index">
-            <ng-container *ngIf="(selectedOption=='name' && emp.userName.toLocaleLowerCase().includes(searchedValue.toLocaleLowerCase()) ) || (checkCompetence(selectedOption, emp , searchedValue))">
+            <ng-container
+                *ngIf="(selectedOption=='name' && emp.userName.toLocaleLowerCase().includes(searchedValue.toLocaleLowerCase()) ) || (checkCompetence(selectedOption, emp , searchedValue.toLocaleLowerCase(), i))">
                 <!-- TODO trasformarli in una funzione, also la seconda condizione non funziona-->
-                
+
                 <li>
 
 
@@ -48,27 +49,47 @@
 </div>
 
 <div *ngIf="checkShowCompetences==true; ">
+    Filtra per:
+    <select [(ngModel)]="selectedOption" name="first">
+        <option value="name">Nome Area</option>
+        <option value="competencesInArea">Nome Competenze </option>
+
+    </select>
+
+    <input [(ngModel)]="searchedValue" type="text">
+
+    {{selectedOption}}
+    {{searchedValue}}
+
     <ul>
-        <li *ngFor="let empCompetence of competences; let i=index">
-            <!-- Chiedi a gabri come fare meglio-->
+     
+        
+        <ng-container *ngFor="let empCompetence of competences; let i=index">
+            <ng-container *ngIf="(selectedOption=='name' && empCompetence.areaName.toLocaleLowerCase().includes(searchedValue.toLocaleLowerCase())) || (selectedOption=='competencesInArea') ">
+            <li>
+                <!-- Sempre solito problema dell' iterazione del array all'interno-->
 
-            <a routerLink="/employees/{{empCompetence.id}}">
-                <!-- Da aggiungere gli id-->
-                <span>{{empCompetence.areaName}} :</span> <!-- NON MI PRENDE GLI INDEX-->
-            </a>
+                <a routerLink="/employees/{{empCompetence.id}}">
+                    <!-- Da aggiungere gli id-->
+                    <span>{{empCompetence.areaName}} :</span>
+                </a>
+
+                
+
+                <div *ngFor="let competenze of empCompetence.competencesForArea">
+                    
+                    <br>
+                    Area di Competenza: <span>{{competenze.nameCompetence}}</span>
+
+                    <br>
 
 
-
-            <div *ngFor="let competenze of empCompetence.competencesForArea">
-                <br>
-                Area di Competenza: <span>{{competenze.nameCompetence}}</span>
-
-                <br>
-
-
-            </div>
-            <hr>
-        </li>
+                </div>
+                <hr>
+            </li>
+        </ng-container>
+    </ng-container>
+            
 
 
 
