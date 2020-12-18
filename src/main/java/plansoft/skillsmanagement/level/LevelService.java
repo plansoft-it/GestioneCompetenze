@@ -25,7 +25,6 @@ public class LevelService {
 
 	public void addLevel(Level level) {
 		levelRepository.save(level);
-
 	}
 
 	public void updateLevel(Level level, int id) {
