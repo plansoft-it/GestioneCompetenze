@@ -31,5 +31,20 @@ import { Dipendente } from './dipendenti-inteface';
                 level: 1
             }
         ]
-    }
+    },
+    {
+        userName: "Paolo Bianchi",
+        competenceUser: [
+            {
+                nameComp: 'Phyton',
+                area: 'linguaggi programmazione',
+                level: 1
+            },
+            {
+                nameComp: 'iOS',
+                area: 'Sistemi operativi',
+                level: 1
+            }
+        ]
+    },
 ];

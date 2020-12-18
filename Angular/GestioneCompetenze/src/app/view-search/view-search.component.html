@@ -65,7 +65,7 @@
      
         
         <ng-container *ngFor="let empCompetence of competences; let i=index">
-            <ng-container *ngIf="(selectedOption=='name' && empCompetence.areaName.toLocaleLowerCase().includes(searchedValue.toLocaleLowerCase())) || (selectedOption=='competencesInArea') ">
+            <ng-container *ngIf="(selectedOption=='name' && empCompetence.areaName.toLocaleLowerCase().includes(searchedValue.toLocaleLowerCase())) || (checkAreaCompetence(selectedOption, empCompetence, searchedValue.toLocaleLowerCase(), i )) ">
             <li>
                 <!-- Sempre solito problema dell' iterazione del array all'interno-->
 

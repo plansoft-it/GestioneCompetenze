@@ -13,7 +13,7 @@ export class ViewSearchComponent implements OnInit {
 
   employees = DIPENDENTI;
   competences = COMPETENZE;
-  checkShowEmployees: boolean = false;
+  checkShowEmployees: boolean = true;
   checkShowCompetences: boolean = false;
 
   searchedValue: string = "";
@@ -35,36 +35,43 @@ export class ViewSearchComponent implements OnInit {
   }
 
 
-  
+
   checkCompetence(option: string, emp, searchedValue: string, index1): boolean {
     emp = DIPENDENTI;
-    
-    if (option == 'knownCompetences') {
-      
-        for (let index = 0; index < emp[index1].competenceUser.length; index++) {
-          if (emp[index1].competenceUser[index].nameComp.toLocaleLowerCase().includes(searchedValue)) {
-            return true;
-          }
-         
 
+    if (option == 'knownCompetences') {
+
+      for (let index = 0; index < emp[index1].competenceUser.length; index++) {
+        if (emp[index1].competenceUser[index].nameComp.toLocaleLowerCase().includes(searchedValue)) {
+          return true;
         }
-      
+
+
+      }
+
     }
     return false;
   }
 
 
   ///DA SISTEMARE 
-checkAreaCompetence(arrayArea, searchedValue:string): boolean{
-  arrayArea = COMPETENZE;
-  for (let index = 0; index < arrayArea.competencesForArea.length; index++) {
-    if(arrayArea.competencesForArea[index]==searchedValue){
-      return true; 
-    }
-    
-  }
-  return false;
-}
+  checkAreaCompetence(option: string, empCompetence, searchedValue: string, index1): boolean {
+    empCompetence = COMPETENZE;
 
+    if (option == 'competencesInArea') {
+
+      for (let index = 0; index < empCompetence[index1].competencesForArea.length; index++) {
+        if (empCompetence[index1].competencesForArea[index].nameCompetence.toLocaleLowerCase().includes(searchedValue)) { //Sono andato a caso ma funziona
+          return true;
+        }
+
+
+      }
+
+    }
+    return false;
+
+
+  }
 
 }
