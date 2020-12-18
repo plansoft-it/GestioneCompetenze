@@ -7,7 +7,7 @@ import javax.persistence.Id;
 public class Employee {
 
 	@Id
-	private String id;
+	private int id;
 	private String name;
 	private String surname;
 
@@ -15,17 +15,17 @@ public class Employee {
 
 	}
 
-	public Employee(String id, String name, String surname) {
+	public Employee(int id, String name, String surname) {
 		this.id = id;
 		this.name = name;
 		this.surname = surname;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
