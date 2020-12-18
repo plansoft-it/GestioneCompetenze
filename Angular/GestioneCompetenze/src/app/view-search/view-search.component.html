@@ -1,0 +1,77 @@
+<h3>Visualizza</h3>
+
+<button (click)="showEmployees()">Dipendenti</button> &nbsp; <button (click)="showCompetences()">Competenze</button>
+
+
+<div *ngIf="checkShowEmployees==true">
+    Filtra per:
+    <select [(ngModel)]="selectedOption" name="first">
+        <option value="name">Nome</option>
+        <option value="knownCompetences">Competenze</option>
+
+    </select>
+
+    <input [(ngModel)]="searchedValue" type="text">
+
+    {{selectedOption}}
+    {{searchedValue}}
+
+    <ul>
+        <ng-container *ngFor="let emp of employees; let i=index">
+            <ng-container *ngIf="(selectedOption=='name' && emp.userName.toLocaleLowerCase().includes(searchedValue.toLocaleLowerCase()) ) || (checkCompetence(selectedOption, emp , searchedValue))">
+                <!-- TODO trasformarli in una funzione, also la seconda condizione non funziona-->
+                
+                <li>
+
+
+                    <a routerLink="/employees/{{emp.id}}">
+                        <!-- Da aggiungere gli id-->
+                        <span>{{emp.userName}} :</span>
+                    </a>
+
+                    <div *ngFor="let competenze of emp.competenceUser ">
+                        <br>
+                        Area di Competenza: <span>{{competenze.nameComp}}</span>
+
+                        <br>
+
+
+                    </div>
+
+
+                    <hr>
+                </li>
+            </ng-container>
+        </ng-container>
+    </ul>
+
+</div>
+
+<div *ngIf="checkShowCompetences==true; ">
+    <ul>
+        <li *ngFor="let empCompetence of competences; let i=index">
+            <!-- Chiedi a gabri come fare meglio-->
+
+            <a routerLink="/employees/{{empCompetence.id}}">
+                <!-- Da aggiungere gli id-->
+                <span>{{empCompetence.areaName}} :</span> <!-- NON MI PRENDE GLI INDEX-->
+            </a>
+
+
+
+            <div *ngFor="let competenze of empCompetence.competencesForArea">
+                <br>
+                Area di Competenza: <span>{{competenze.nameCompetence}}</span>
+
+                <br>
+
+
+            </div>
+            <hr>
+        </li>
+
+
+
+    </ul>
+
+</div>

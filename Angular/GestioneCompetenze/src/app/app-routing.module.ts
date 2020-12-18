@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DipendentiComponent } from './dipendenti/dipendenti.component';
 import { RicercaComponent } from './ricerca/ricerca.component';
+import { ViewSearchComponent } from './view-search/view-search.component';
 
 
 const routes: Routes = [
@@ -11,6 +12,9 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'dipendenti', component: DipendentiComponent },
   { path: 'ricerca', component: RicercaComponent },
+  { path: 'view-search', component: ViewSearchComponent },
+  { path: 'employee/:id', component: DashboardComponent }, //COMPONENT DA CAMBIARE, SOLO UNA PROVA QUESTO
+  { path: 'areas/:id', component: DashboardComponent },//COMPONENT DA CAMBIARE, SOLO UNA PROVA QUESTO
 ];
 
 @NgModule({

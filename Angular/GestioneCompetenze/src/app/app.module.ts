@@ -6,9 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DipendentiComponent } from './dipendenti/dipendenti.component';
 import { RicercaComponent } from './ricerca/ricerca.component';
-
-import { FormsModule } from '@angular/forms'; //per il select
-
+import { FormsModule } from '@angular/forms';//per il select
+import { ViewSearchComponent } from './view-search/view-search.component'; 
 
 
 @NgModule({
@@ -16,7 +15,8 @@ import { FormsModule } from '@angular/forms'; //per il select
     AppComponent,
     DashboardComponent,
     DipendentiComponent,
-    RicercaComponent
+    RicercaComponent,
+    ViewSearchComponent
   ],
   imports: [
     BrowserModule,
