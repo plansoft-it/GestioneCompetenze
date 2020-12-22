@@ -4,6 +4,7 @@ import { Dipendente } from './dipendenti-inteface';
  export const DIPENDENTI: Dipendente[] = [
     {
         userName: "Mario Rossi",
+        id:1,
         competenceUser: [
             {
                 nameComp: 'java',
@@ -19,6 +20,7 @@ import { Dipendente } from './dipendenti-inteface';
     },
     {
         userName: "Franco Verdi",
+        id:2,
         competenceUser: [
             {
                 nameComp: 'js',
@@ -34,6 +36,7 @@ import { Dipendente } from './dipendenti-inteface';
     },
     {
         userName: "Paolo Bianchi",
+        id:3,
         competenceUser: [
             {
                 nameComp: 'Phyton',

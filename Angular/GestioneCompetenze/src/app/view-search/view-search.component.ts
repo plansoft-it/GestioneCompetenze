@@ -3,6 +3,7 @@ import { DIPENDENTI } from '../lista-fittizia';
 import { COMPETENZE } from '../lista-comp-fittizzia';
 import { Dipendente } from '../dipendenti-inteface';
 import { Competenze } from '../competences-interface';
+import { UserIdService } from '../user-id.service';
 
 @Component({
   selector: 'app-view-search',
@@ -11,7 +12,7 @@ import { Competenze } from '../competences-interface';
 })
 export class ViewSearchComponent implements OnInit {
 
-  employees = DIPENDENTI;
+  employees: Dipendente[]; 
   competences = COMPETENZE;
   checkShowEmployees: boolean = true;
   checkShowCompetences: boolean = false;
@@ -19,10 +20,21 @@ export class ViewSearchComponent implements OnInit {
   searchedValue: string = "";
   selectedOption: string = "name";
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor( private userIdService: UserIdService) { }
+  
+  
+  getEmployees(): void{
+    this.userIdService.getEmployees().subscribe(employees => this.employees = employees)  ///Subscribe è per prende l'observable
+    //this.employees, ha il valore di employees
+    //non funzionerebbe con un vero server
   }
+  
+  ngOnInit(): void {
+    this.getEmployees();
+  }
+
+
+
 
   showEmployees(): void {
     this.checkShowEmployees = true;

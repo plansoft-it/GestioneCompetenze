@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'dipendenti', component: DipendentiComponent },
   { path: 'ricerca', component: RicercaComponent },
   { path: 'view-search', component: ViewSearchComponent },
-  { path: 'employee/:id', component: DashboardComponent }, //COMPONENT DA CAMBIARE, SOLO UNA PROVA QUESTO
+  { path: 'employees/:id', component: DipendentiComponent }, //COMPONENT DA CAMBIARE, SOLO UNA PROVA QUESTO
   { path: 'areas/:id', component: DashboardComponent },//COMPONENT DA CAMBIARE, SOLO UNA PROVA QUESTO
 ];
 

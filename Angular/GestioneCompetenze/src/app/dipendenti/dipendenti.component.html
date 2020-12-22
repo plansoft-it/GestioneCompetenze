@@ -1,7 +1,8 @@
-<h2>Lista Dipendenti</h2>
+<div *ngIf="employee">
 
-
-
+    
+    <h2> {{employee.userName}} </h2>
+    <h2> {{employee.id}} </h2>
     <ul>
         <li>Nome e Cognome</li>
         <li>Area di Competenza</li>
@@ -9,21 +10,4 @@
         <li>Livello</li>
 
     </ul>
-    <ul>
-        <li *ngFor="let dipendente of dipendenti">
-
-            <span>{{dipendente.userName}} :</span>
-          
-          
-            <div *ngFor="let competenze of dipendente.competenceUser ">
-           =========================================================     <br>
-           Area di Competenza: <span>{{competenze.area}}</span> <br>  <!-- convertire in un metodo?-->
-           Nome Competenza: <span>{{competenze.nameComp}}</span> <br> <!-- da modificare , questo è un esempio-->
-           Livello Competenza: <span>{{competenze.level}}</span> <br>
-          
-            </div>
-            
-
-            <hr>
-        </li>
-    </ul>
+</div>
