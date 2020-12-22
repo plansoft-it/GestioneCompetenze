@@ -9,16 +9,16 @@ public class Level {
 	@Id
 	private int id;
 	private String description;
-	private int level_order;
+	private int levelOrder;
 
 	public Level() {
 
 	}
 
-	public Level(int id, String description,  int level_order) {
+	public Level(int id, String description,  int levelOrder) {
 		this.id = id;
 		this.description = description;
-		this.level_order = level_order;
+		this.levelOrder = levelOrder;
 	}
 
 	public int getId() {
@@ -37,11 +37,11 @@ public class Level {
 		this.description = description;
 	}
 	
-	public int getLevel_order() {
-		return level_order;
+	public int getLevelOrder() {
+		return levelOrder;
 	}
 	
-	public void setLevel_order(int level_order) {
-		this.level_order = level_order;
+	public void setLevelOrder(int levelOrder) {
+		this.levelOrder = levelOrder;
 	}
 }
