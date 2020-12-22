@@ -24,13 +24,11 @@ public class LevelService {
 	}
 
 	public void addLevel(Level level) {
-		List<Level> levels = new ArrayList<>();
-		levelRepository.findAll().forEach(levels::add);
-		for (Level lev : levels) {
-			if (lev.getLevelOrder() == level.getLevelOrder()) {
+		List<Level> levels = getAllLevels();
+		for (Level currentLevel : levels) {
+			if (currentLevel.getLevelOrder() == level.getLevelOrder()) {
 				int currentLevelOrder = level.getLevelOrder();
-				for (Level level2 : levels) {
-					Level levelToChange = level2;
+				for (Level levelToChange : levels) {
 					if (levelToChange.getLevelOrder() >= currentLevelOrder) {
 						levelToChange.setLevelOrder(levelToChange.getLevelOrder() + 1);
 					}
