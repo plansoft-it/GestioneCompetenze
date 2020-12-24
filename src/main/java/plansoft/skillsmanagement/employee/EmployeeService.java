@@ -30,11 +30,10 @@ public class EmployeeService {
 	}
 
 	public void updateEmployee(Employee employee, int id) {
-		if (employeeRepository.existsById(id)) {
-			employeeRepository.deleteById(id);
-			employeeRepository.save(employee);
-		}
-
+		Employee currentEmployee = employeeRepository.findById(id).get();
+		currentEmployee.setName(employee.getName());
+		currentEmployee.setSurname(employee.getSurname());
+		employeeRepository.save(currentEmployee);
 	}
 
 	public void deleteEmployee(int id) {

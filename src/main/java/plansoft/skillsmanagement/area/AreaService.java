@@ -28,12 +28,13 @@ public class AreaService {
 	}
 
 	public void updateArea(Area area, int id) {
-		areaRepository.save(area);
+			Area currentArea = areaRepository.findById(id).get();
+			currentArea.setDescription(area.getDescription());
+			areaRepository.save(currentArea);
 	}
 
 	public void deleteArea(int id) {
 		areaRepository.deleteById(id);
 	}
-	
-	
+
 }

@@ -40,15 +40,14 @@ public class LevelService {
 	}
 
 	public void updateLevel(Level level, int id) {
-		if (levelRepository.existsById(id)) {
-			levelRepository.deleteById(id);
-			levelRepository.save(level);
-		}
+		Level currentLevel = levelRepository.findById(id).get();
+		currentLevel.setDescription(level.getDescription());
+		currentLevel.setLevelOrder((level.getLevelOrder()));
+		levelRepository.save(currentLevel);
 
 	}
 
 	public void deleteLevel(int id) {
 		levelRepository.deleteById(id);
 	}
-
 }
