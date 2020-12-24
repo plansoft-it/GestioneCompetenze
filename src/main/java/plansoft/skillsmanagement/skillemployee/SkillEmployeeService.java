@@ -30,7 +30,7 @@ public class SkillEmployeeService {
 	// the skill with id equal to id_skill
 	public List<SkillEmployee> getAllSkillEmployeeByIdSkill(int idSkill) {
 		List<SkillEmployee> skillsEmployees = new ArrayList<>();
-		skillEmployeeRepository.findAllByIdskill(idSkill).forEach(skillsEmployees::add);
+		skillEmployeeRepository.findAllByIdSkill(idSkill).forEach(skillsEmployees::add);
 		return skillsEmployees;
 	}
 
@@ -40,9 +40,9 @@ public class SkillEmployeeService {
 	public List<SkillEmployee> getAllSkillEmployeeByIdSkillAndIdLevel(int idSkill, int idLevel) {
 		List<SkillEmployee> skillEmployeesToReturn = new ArrayList<>();
 		int inputlevelOrder = levelRepository.findById(idLevel).get().getLevelOrder();
-		Iterable<SkillEmployee> skillEmployeesByIdSkill = skillEmployeeRepository.findAllByIdskill(idSkill);
+		Iterable<SkillEmployee> skillEmployeesByIdSkill = skillEmployeeRepository.findAllByIdSkill(idSkill);
 		for (SkillEmployee skillEmployee : skillEmployeesByIdSkill) {
-			Level currentLevel = levelRepository.findById(skillEmployee.getIdlevel()).get();
+			Level currentLevel = levelRepository.findById(skillEmployee.getIdLevel()).get();
 			if (currentLevel.getLevelOrder() >= inputlevelOrder)
 				skillEmployeesToReturn.add(skillEmployee);
 		}
@@ -53,18 +53,18 @@ public class SkillEmployeeService {
 	// to an employee, who owns the skill itself
 	public List<SkillEmployee> getAllSkillEmployeeByIdEmployee(int idEmployee) {
 		List<SkillEmployee> skillsemps = new ArrayList<>();
-		skillEmployeeRepository.findAllByIdemployee(idEmployee).forEach(skillsemps::add);
+		skillEmployeeRepository.findAllByIdEmployee(idEmployee).forEach(skillsemps::add);
 		return skillsemps;
 	}
 
 	// change level of a skill related to an employee
 	public void updateSkillEmployeeIdLevel(int idLevel, int idEmployee, int idSkill) {
 		List<SkillEmployee> skillEmployees = new ArrayList<>();
-		skillEmployeeRepository.findAllByIdemployee(idEmployee).forEach(skillEmployees::add);// all skills of employee
+		skillEmployeeRepository.findAllByIdEmployee(idEmployee).forEach(skillEmployees::add);// all skills of employee
 																								// id_emp
 		for (SkillEmployee skillEmployee : skillEmployees) {
-			if (skillEmployee.getIdskill() == idSkill) {
-				skillEmployee.setIdlevel(idLevel);
+			if (skillEmployee.getIdSkill() == idSkill) {
+				skillEmployee.setIdLevel(idLevel);
 			}
 		}
 	}
@@ -78,7 +78,7 @@ public class SkillEmployeeService {
 		List<SkillEmployee> skillEmployees = new ArrayList<>();
 		skillEmployeeRepository.findAll().forEach(skillEmployees::add);
 		for (SkillEmployee skillEmployee : skillEmployees) {
-			if (skillEmployee.getIdemployee() == idEmployee && skillEmployee.getIdskill() == idSkill) {
+			if (skillEmployee.getIdEmployee() == idEmployee && skillEmployee.getIdSkill() == idSkill) {
 				skillEmployeeRepository.delete(skillEmployee);
 			}
 		}

@@ -6,10 +6,8 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface SkillEmployeeRepository extends CrudRepository<SkillEmployee, Integer> {
 
-	List<SkillEmployee> findAllByIdskill(int idskill);
+	List<SkillEmployee> findAllByIdSkill(int idSkill);
 
-	List<SkillEmployee> findAllByIdemployee(int id_emp);
-
-	void deleteByIdemployee(int id_emp);
+	List<SkillEmployee> findAllByIdEmployee(int idEmployee);
 
 }

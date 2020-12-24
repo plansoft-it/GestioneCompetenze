@@ -9,20 +9,20 @@ public class SkillEmployee {
 	@Id
 	private int id;
 
-	private int idemployee;
-	private int idskill;
-	private int idlevel;
+	private int idEmployee;
+	private int idSkill;
+	private int idLevel;
 
 	public SkillEmployee() {
 		super();
 	}
 
-	public SkillEmployee(int id, int idemployee, int idskill, int idlevel) {
+	public SkillEmployee(int id, int idEmployee, int idSkill, int idLevel) {
 		super();
 		this.id = id;
-		this.idemployee = idemployee;
-		this.idskill = idskill;
-		this.idlevel = idlevel;
+		this.idEmployee = idEmployee;
+		this.idSkill = idSkill;
+		this.idLevel = idLevel;
 	}
 
 	public int getId() {
@@ -33,28 +33,28 @@ public class SkillEmployee {
 		this.id = id;
 	}
 
-	public int getIdemployee() {
-		return idemployee;
+	public int getIdEmployee() {
+		return idEmployee;
 	}
 
-	public void setIdemployee(int idemployee) {
-		this.idemployee = idemployee;
+	public void setIdEmployee(int idEmployee) {
+		this.idEmployee = idEmployee;
 	}
 
-	public int getIdskill() {
-		return idskill;
+	public int getIdSkill() {
+		return idSkill;
 	}
 
-	public void setIdskill(int idskill) {
-		this.idskill = idskill;
+	public void setIdSkill(int idSkill) {
+		this.idSkill = idSkill;
 	}
 
-	public int getIdlevel() {
-		return idlevel;
+	public int getIdLevel() {
+		return idLevel;
 	}
 
-	public void setIdlevel(int idlevel) {
-		this.idlevel = idlevel;
+	public void setIdLevel(int idLevel) {
+		this.idLevel = idLevel;
 	}
 
 }
