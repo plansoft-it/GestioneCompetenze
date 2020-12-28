@@ -17,8 +17,19 @@ export class UserIdService {
   }
 
   getEmployee(id: number): Observable<Dipendente> {
-    
+
     return of(DIPENDENTI.find(employee => employee.id == id));
   }
+
+  getCompetences(): Observable<Competenze[]> { //Ritorna un Observables con l'array dei dipendenti
+    return of(COMPETENZE);
+  }
+
+  getCompetence(id: number): Observable<Competenze> {
+
+    return of(COMPETENZE.find(area => area.id == id));
+  }
+
+
 
 }

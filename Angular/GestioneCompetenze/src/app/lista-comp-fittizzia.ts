@@ -4,6 +4,7 @@ import { Competenze } from './competences-interface';
 export const COMPETENZE: Competenze[] = [
     {
         areaName: "Sistemi Operativi",
+        id: 1,
         competencesForArea: [
             {
                 nameCompetence: "Linux"
@@ -20,6 +21,7 @@ export const COMPETENZE: Competenze[] = [
     },
     {
         areaName: "Linguaggi di Programmazione",
+        id: 2,
         competencesForArea: [
             {
                 nameCompetence: "Java"

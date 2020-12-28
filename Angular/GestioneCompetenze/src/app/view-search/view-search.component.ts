@@ -5,6 +5,7 @@ import { Dipendente } from '../dipendenti-inteface';
 import { Competenze } from '../competences-interface';
 import { UserIdService } from '../user-id.service';
 
+
 @Component({
   selector: 'app-view-search',
   templateUrl: './view-search.component.html',
@@ -13,7 +14,7 @@ import { UserIdService } from '../user-id.service';
 export class ViewSearchComponent implements OnInit {
 
   employees: Dipendente[]; 
-  competences = COMPETENZE;
+  competences: Competenze[];
   checkShowEmployees: boolean = true;
   checkShowCompetences: boolean = false;
 
@@ -26,11 +27,21 @@ export class ViewSearchComponent implements OnInit {
   getEmployees(): void{
     this.userIdService.getEmployees().subscribe(employees => this.employees = employees)  ///Subscribe è per prende l'observable
     //this.employees, ha il valore di employees
-    //non funzionerebbe con un vero server
+    
+  
   }
+
+  getCompetences(): void{
+    this.userIdService.getCompetences().subscribe(competences => this.competences = competences)  
+   
+    
+  
+  }
+  
   
   ngOnInit(): void {
     this.getEmployees();
+    this.getCompetences();
   }
 
 
