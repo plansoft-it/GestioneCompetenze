@@ -58,13 +58,34 @@ export class ViewSearchComponent implements OnInit {
   }
 
 
+  checkNameSurname(option: string, emp:Dipendente, searchedValue):boolean{
+    if (option=='name' && emp.userName.toLocaleLowerCase().includes(searchedValue.toLocaleLowerCase()) ) {
+     return true;
+    } 
+    
+    else if (option=='surname' && emp.userSurname.toLocaleLowerCase().includes(searchedValue.toLocaleLowerCase()) ){
+      return true
+    }
+  
+
+
+    return false;
+  }
+
+ 
+checkAreaName(option:string, empCompetence:Competenze, searchedValue ) :boolean{
+  if ( option=='name' && empCompetence.areaName.toLocaleLowerCase().includes(searchedValue.toLocaleLowerCase())){
+    return true;
+  }
+  return false;
+}
 
   checkCompetence(option: string, emp, searchedValue: string, index1): boolean {
     emp = DIPENDENTI;
 
     if (option == 'knownCompetences') {
 
-      for (let index = 0; index < emp[index1].competenceUser.length; index++) {
+      for (let index = 0; index < emp[index1].competenceUser.length; index++) { //INDEX 1 viene preso dal ciclo nell'HTML
         if (emp[index1].competenceUser[index].nameComp.toLocaleLowerCase().includes(searchedValue)) {
           return true;
         }

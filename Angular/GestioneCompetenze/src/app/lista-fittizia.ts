@@ -3,7 +3,8 @@ import { Dipendente } from './dipendenti-inteface';
 
  export const DIPENDENTI: Dipendente[] = [
     {
-        userName: "Mario Rossi",
+        userName: "Mario",
+        userSurname: "Rossi",
         id:1,
         competenceUser: [
             {
@@ -19,7 +20,8 @@ import { Dipendente } from './dipendenti-inteface';
         ]
     },
     {
-        userName: "Franco Verdi",
+        userName: "Franco",
+        userSurname: "Verdi",
         id:2,
         competenceUser: [
             {
@@ -35,7 +37,8 @@ import { Dipendente } from './dipendenti-inteface';
         ]
     },
     {
-        userName: "Paolo Bianchi",
+        userName: "Paolo",
+        userSurname: "Bianchi",
         id:3,
         competenceUser: [
             {
