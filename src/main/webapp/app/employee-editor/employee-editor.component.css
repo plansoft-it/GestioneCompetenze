@@ -1,0 +1,44 @@
+.myButton, select {
+	box-shadow: 2px 2px 0px 0px #899599;
+	background:linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
+	background-color:#ededed;
+	border-radius:5px;
+	display:inline-block;
+	cursor:pointer;
+	color: black;
+	font-family:Arial;
+	font-size:10px;
+	padding:8px 10px;
+	text-decoration:none;
+}
+.myButton:hover {
+    background:linear-gradient(to bottom, rgb(230, 230, 230) 5%, rgb(63, 63, 63) 100%);
+	background-color:grey;
+}
+.myButton:active {
+    position: relative;
+	top:1px;
+}
+
+.description {
+	width: 100px;
+}
+
+td {
+	padding: 5px;
+}
+
+a {
+	color:black;
+}
+
+select:hover {
+	background:linear-gradient(to bottom, rgb(230, 230, 230) 5%, rgb(63, 63, 63) 100%);
+}
+
+.title {
+	box-shadow: 1px 1px 0px 0px #899599;
+	font-size: 1.1em;
+	width: 150px;
+	border-radius: 3px;
+}
