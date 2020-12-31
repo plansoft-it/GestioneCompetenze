@@ -65,6 +65,7 @@ public class SkillEmployeeService {
 		for (SkillEmployee skillEmployee : skillEmployees) {
 			if (skillEmployee.getIdSkill() == idSkill) {
 				skillEmployee.setIdLevel(idLevel);
+				skillEmployeeRepository.save(skillEmployee);
 			}
 		}
 	}

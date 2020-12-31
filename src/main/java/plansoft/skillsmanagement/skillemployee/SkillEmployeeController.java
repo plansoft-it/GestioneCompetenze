@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -38,9 +37,9 @@ public class SkillEmployeeController {
 	}
 
 	@RequestMapping(method = RequestMethod.PUT, value = "/skillemployees/employees/{idemployee}/skills/{idskill}")
-	public void updateSkillEmployeeIdLevel(@RequestParam int idLevel, @PathVariable("idemployee") int idEmployee,
+	public void updateSkillEmployeeIdLevel(@RequestBody SkillEmployee skillEmployee, @PathVariable("idemployee") int idEmployee,
 			@PathVariable("idskill") int idSkill) {
-		skillEmployeeService.updateSkillEmployeeIdLevel(idLevel, idEmployee, idSkill);
+		skillEmployeeService.updateSkillEmployeeIdLevel(skillEmployee.getIdLevel(), idEmployee, idSkill);
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/skillemployees")
