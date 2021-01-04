@@ -14,14 +14,21 @@ export class SkillEditorComponent implements OnInit {
 
   areas = AREAS;
   skills = SKILLS;
-  addingSkill=false;
   selectedArea: Area;
-  editingAreaName: boolean = false;
+  newAreaName: string;
+  newSkillName: string;
+  editId: number;
+  addingSkill = false;
+  addingArea = false;
+  editingAreaName = false;
+  editingSkillName = false;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.selectedArea = { id: 0, description: 'Seleziona Area'};
+    this.selectedArea = {id: 0, description: 'Seleziona Area'};
+    this.newAreaName = '';
+    this.newSkillName = '';
   }
 
   setSelectedArea(areaTarget: number): void {
@@ -42,12 +49,56 @@ export class SkillEditorComponent implements OnInit {
     return tempSkills;
   }
 
-  deleteArea(areaTarget: Area): void{
-    alert("Not Yet Implemented");
+  deleteArea(): void{
+    if(confirm("Stai per cancellare l'area "+this.selectedArea.description)) {
+      let found=false;
+      for(let skill in this.skills) {
+        if(this.skills[skill].idArea == this.selectedArea.id){
+          found=true;
+        }
+      }
+      if(found) {
+        alert("Non puoi cancellare un'Area con Competenze associate")
+      } else {
+        let i=0;
+        for(let area in this.areas) {
+          i++;
+          if(this.areas[area].id == this.selectedArea.id){
+            this.areas.splice(i-1, 1);
+            this.selectedArea = {id: 0, description: 'Seleziona Area'};
+          }
+        }
+      }
+    }
   }
 
   deleteSkill(skillTarget: Skill): void {
-    alert("Not Yet Implemented");
+    if(confirm("Stai per cancellare la competenza "+skillTarget.description+" di "+this.selectedArea.description)) {
+      let i=0;
+      for(let skill in this.skills) {
+        i++;
+        if(this.skills[skill].id == skillTarget.id){
+          this.skills.splice(i-1, 1);
+        }
+      }
+    }
   }
 
+  addNewArea(): void {
+    if(this.newAreaName != '') {
+      this.areas.push({id: (this.areas.length)+1, description: this.newAreaName});
+      this.newAreaName='';
+    } else {
+      alert("Specifica un nome per la nuova Area");
+    }
+  }
+
+  addNewSkill(): void {
+    if(this.newSkillName != '') {
+      this.skills.push({id: (this.skills.length)+1, description: this.newSkillName, idArea: this.selectedArea.id})
+      this.newSkillName='';
+    } else {
+      alert("Specifica un nome per la nuova Competenza");
+    }
+  }
 }

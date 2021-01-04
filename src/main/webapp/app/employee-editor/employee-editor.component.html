@@ -5,11 +5,13 @@
     <button class="myButton"><a class="nav-link" href="modificacompetenze">Competenze</a></button>
 </nav>
 
+<!--
 <button class="myButton" title="Torna ai Dipendenti"><a href="dipendentipuntoqualcosa"><i class="fas fa-chevron-left"></i></a></button>
 <br>
+-->
 
 <ng-container *ngIf="!editEmp; else edit">
-    <td><h2>Modifica {{employee.name}} {{employee.surname}}</h2></td>
+    <td><h2>Gestisci {{employee.name}} {{employee.surname}}</h2></td>
     <td><button class="myButton" title="Modify Employee" (click)="editEmp=true"><i class="fas fa-user-edit"></i></button></td>
 </ng-container>
 <ng-template #edit>
