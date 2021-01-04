@@ -28,7 +28,9 @@ public class SkillService {
 	}
 
 	public void updateSkill(Skill skill, int id) {
-		skillRepository.save(skill);
+		Skill currentSkill = skillRepository.findById(id).get();
+		currentSkill.setName((skill.getName()));
+		skillRepository.save(currentSkill);
 	}
 
 	public void deleteSkill(int id) {
