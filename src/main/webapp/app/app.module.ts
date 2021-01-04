@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { EmployeeEditorComponent } from './employee-editor/employee-editor.component';
 import { FormsModule } from '@angular/forms';
 import { SkillEditorComponent } from './skill-editor/skill-editor.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,12 @@ import { SkillEditorComponent } from './skill-editor/skill-editor.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot([
+      {path: "edit-employee", component: EmployeeEditorComponent},
+      {path: "edit-skill", component: SkillEditorComponent},
+      {path: "", redirectTo: "edit-employee", pathMatch: "full"},
+    ]),
   ],
   providers: [],
   bootstrap: [AppComponent]
