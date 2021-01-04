@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AreaService {
-	
+
 	@Autowired
 	private AreaRepository areaRepository;
 
@@ -28,9 +28,9 @@ public class AreaService {
 	}
 
 	public void updateArea(Area area, int id) {
-			Area currentArea = areaRepository.findById(id).get();
-			currentArea.setDescription(area.getDescription());
-			areaRepository.save(currentArea);
+		Area currentArea = areaRepository.findById(id).get();
+		currentArea.setDescription(area.getDescription());
+		areaRepository.save(currentArea);
 	}
 
 	public void deleteArea(int id) {
