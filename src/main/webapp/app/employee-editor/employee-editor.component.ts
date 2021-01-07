@@ -25,8 +25,8 @@ export class EmployeeEditorComponent implements OnInit {
   levels = LEVELS;
   editEmp=false;
   addingSkill=false;
-  selectedArea: Area;
-  selectedSkill: Skill;
+  selectedArea;
+  selectedSkill;
 
   constructor() { }
 
@@ -51,14 +51,16 @@ export class EmployeeEditorComponent implements OnInit {
     let idEmp = this.employee.id;
     for(let skillEmp in this.skillEmps) {
       if(idEmp == this.skillEmps[skillEmp].idEmp) {
-        tempSkills.push(this.skillEmps[skillEmp].idSkill);
+        tempSkills.push(parseInt(''+this.skillEmps[skillEmp].idSkill));
       }
     }
+    console.log(tempSkills);
     for(let skill in this.skills) {
       if(tempSkills.includes(this.skills[skill].id)) {
         skillArea.push(this.skills[skill].idArea);
       }
     }
+    console.log(skillArea);
     for(let tempArea in this.areas) {
       if(skillArea.includes(this.areas[tempArea].id)){
         if(!tempAreas.includes(this.areas[tempArea])) {
@@ -146,6 +148,7 @@ export class EmployeeEditorComponent implements OnInit {
   }
 
   addSkillToEmployee(skillId: number): void {
+    console.log(skillId.valueOf());
     this.skillEmps.push({idEmp: this.employee.id, idSkill: skillId, idLevel: 1});
     this.selectedArea = null;
     this.selectedSkill = null;

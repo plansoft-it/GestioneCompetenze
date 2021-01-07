@@ -95,7 +95,7 @@ export class SkillEditorComponent implements OnInit {
 
   addNewSkill(): void {
     if(this.newSkillName != '') {
-      this.skills.push({id: (this.skills.length)+1, description: this.newSkillName, idArea: this.selectedArea.id})
+      this.skills.push({id: (this.skills.length) + 1, description: this.newSkillName, idArea: this.selectedArea.id})
       this.newSkillName='';
     } else {
       alert("Specifica un nome per la nuova Competenza");

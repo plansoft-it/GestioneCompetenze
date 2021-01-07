@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 
 
-
+<ul *ngFor="let area of getAreas()"><li>{{area.description}} {{area.id}}</li></ul>
 <ng-container *ngIf="!editEmp; else edit">
     <td><h2>Modifica {{employee.name}} {{employee.surname}}</h2></td>
     <td><button class="myButton" title="Modify Employee" (click)="editEmp=true"><i class="fas fa-user-edit"></i></button></td>
@@ -20,7 +20,7 @@
                     <tr>
                         <td><button class="myButton" title="Delete skill" (click)="deleteSkill(skill)"><i class="fas fa-trash-alt"></i></button></td>
                         <td class="description">{{skill.description}}</td>
-                        <td><button>{{getLevel(employee.id, skill.id).description}}</button></td>
+                        <td><button>{{getLevel(skill.id).description}}</button></td>
                         <td><button class="myButton" title="Increase Level" (click)="modifyLevel('+', skill.id)"><i class="fas fa-plus"></i></button>
                         <button class="myButton" title="Decrease Level" (click)="modifyLevel('-', skill.id)"><i class="fas fa-minus"></i></button></td>
                     </tr>
