@@ -86,7 +86,7 @@ export class SkillEditorComponent implements OnInit {
 
   addNewArea(): void {
     if(this.newAreaName != '') {
-      this.areas.push({id: (this.areas.length)+1, description: this.newAreaName});
+      this.areas.push({id: (this.areas.length) + 1, description: this.newAreaName});
       this.newAreaName='';
     } else {
       alert("Specifica un nome per la nuova Area");
