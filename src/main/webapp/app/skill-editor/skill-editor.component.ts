@@ -86,7 +86,7 @@ export class SkillEditorComponent implements OnInit {
 
   addNewArea(): void {
     if(this.newAreaName != '') {
-      this.areas.push({id: (this.areas.length)+1, description: this.newAreaName});
+      this.areas.push({id: (this.areas.length) + 1, description: this.newAreaName});
       this.newAreaName='';
     } else {
       alert("Specifica un nome per la nuova Area");
@@ -95,7 +95,7 @@ export class SkillEditorComponent implements OnInit {
 
   addNewSkill(): void {
     if(this.newSkillName != '') {
-      this.skills.push({id: (this.skills.length)+1, description: this.newSkillName, idArea: this.selectedArea.id})
+      this.skills.push({id: (this.skills.length) + 1, description: this.newSkillName, idArea: this.selectedArea.id})
       this.newSkillName='';
     } else {
       alert("Specifica un nome per la nuova Competenza");

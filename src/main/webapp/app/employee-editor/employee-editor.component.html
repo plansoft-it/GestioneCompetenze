@@ -1,15 +1,5 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 
-<nav>
-    <button class="myButton"><a class="nav-link" href="visualizzadipendenti">Dipendenti</a></button>
-    <button class="myButton"><a class="nav-link" href="modificacompetenze">Competenze</a></button>
-</nav>
-
-<!--
-<button class="myButton" title="Torna ai Dipendenti"><a href="dipendentipuntoqualcosa"><i class="fas fa-chevron-left"></i></a></button>
-<br>
--->
-
 <ng-container *ngIf="!editEmp; else edit">
     <td><h2>Gestisci {{employee.name}} {{employee.surname}}</h2></td>
     <td><button class="myButton" title="Modify Employee" (click)="editEmp=true"><i class="fas fa-user-edit"></i></button></td>
@@ -20,17 +10,17 @@
 </ng-template>
 
 <div>
-    <ul *ngFor="let area of getAreas(employee.id)">
+    <ul *ngFor="let area of getAreas()">
         <li>{{area.description}}</li>
-        <ul style="list-style-type: none" *ngFor="let skill of getSkills(area.id, employee.id)">
+        <ul style="list-style-type: none" *ngFor="let skill of getSkills(area.id)">
             <table>
                 <li>
                     <tr>
-                        <td><button class="myButton" title="Delete skill" (click)="deleteSkill(employee.id, skill)"><i class="fas fa-trash-alt"></i></button></td>
+                        <td><button class="myButton" title="Delete skill" (click)="deleteSkill(skill)"><i class="fas fa-trash-alt"></i></button></td>
                         <td class="description">{{skill.description}}</td>
-                        <td><button>{{getLevel(employee.id, skill.id).description}}</button></td>
-                        <td><button class="myButton" title="Increase Level" (click)="modifyLevel('+', skill.id, employee.id)"><i class="fas fa-plus"></i></button>
-                        <button class="myButton" title="Decrease Level" (click)="modifyLevel('-', skill.id, employee.id)"><i class="fas fa-minus"></i></button></td>
+                        <td><button>{{getLevel(skill.id).description}}</button></td>
+                        <td><button class="myButton" title="Increase Level" (click)="modifyLevel('+', skill.id)"><i class="fas fa-plus"></i></button>
+                        <button class="myButton" title="Decrease Level" (click)="modifyLevel('-', skill.id)"><i class="fas fa-minus"></i></button></td>
                     </tr>
                 </li>
             </table>
@@ -49,9 +39,9 @@
                 </select></td>
                 <td><select *ngIf="selectedArea" [(ngModel)]="selectedSkill">
                     <option disabled selected>Seleziona Competenza</option>
-                    <option *ngFor="let skillArea of getAvailableSkillsEmployeeForArea(employee.id, selectedArea)" value="{{skillArea.id}}">{{skillArea.description}}</option>
+                    <option *ngFor="let skillArea of getAvailableSkillsEmployeeForArea(selectedArea)" value="{{skillArea.id}}">{{skillArea.description}}</option>
                 </select></td> 
-                <td><button class="myButton" title="Submit" (click)="addSkillToEmployee(employee.id, selectedSkill); addingSkill=false"><i class="fas fa-save"></i></button></td>
+                <td><button class="myButton" title="Submit" (click)="addSkillToEmployee(selectedSkill); addingSkill=false"><i class="fas fa-save"></i></button></td>
             </tr>
         </table>
             </ng-container>
@@ -60,41 +50,3 @@
         <button class="myButton" title="Add Skill" (click)="addingSkill=true"><i class="fas fa-plus"></i></button>
     </ng-template>
 </div>
-
-
-<!--
-
-<ul *ngFor="let area of getAreas(employee.id)">
-        <li>{{area.description}} {{tempSkills}}</li>
-        <ul style="list-style-type: none" *ngFor="let skill of getSkills(area.id, employee.id); last as isLast">
-            <table>
-                <li>
-                    <tr>
-                    <ng-container *ngIf="skill.id != 0; else tmp">
-                        <td><button class="myButton" title="Delete skill" (click)="deleteSkill(skill)"><i class="fas fa-trash-alt"></i></button></td>
-                        <td class="description">{{skill.description}}</td>
-                        <td><button>{{getLevel(employee.id, skill.id).description}}</button></td>
-                        <td><button class="myButton" title="Increase Level" (click)="modifyLevel('+')"><i class="fas fa-plus"></i></button>
-                        <button class="myButton" title="Decrease Level" (click)="modifyLevel('-')"><i class="fas fa-minus"></i></button></td>
-                    </ng-container>
-                    <ng-template #tmp>
-                        <td><button class="myButton" title="Delete skill" (click)="deleteSkill(skill)"><i class="fas fa-trash-alt"></i></button></td>
-                        <td><select>
-                            <option disabled selected>Seleziona Competenza</option>
-                            <option *ngFor="let skillArea of getAllSkillsArea(area.id)" value="{{skillArea.id}}">{{skillArea.description}}</option>
-                        </select></td>
-                        <td><button class="myButton" title="Submit" (click)="submitSkillEmp(skill, employee.id)"><i class="fas fa-save"></i></button></td>
-                    </ng-template>
-                    </tr>
-                </li>
-                <li *ngIf="isLast">
-                    <tr>
-                        <td width="50px"></td>
-                        <td><button class="myButton" title="Add Skill" (click)="addSkillToEmployee(employee.id)"><i class="fas fa-plus"></i></button></td>
-                    </tr>
-                </li>
-            </table>
-        </ul>
-    </ul>
-
--->

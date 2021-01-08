@@ -1,15 +1,8 @@
-<h1>Benvenuto nella Homepage!</h1>
-
-<!--
+<h1>Gestione Competenze</h1>
 
 <nav>
-    <a routerLink="/show">Visualizza tutti i dipendenti</a>
-    <a routerLink="/edit">Modifica dipendenti</a>
-    <a routerLink="/search">Ricerca dipendente</a>
+    <a routerLink="/edit-employee" routerLinkActive="active"><button class="myButton">Dipendenti</button></a>
+    <a routerLink="/edit-skill" routerLinkActive="active"><button class="myButton">Competenze</button></a>
 </nav>
 
-<app-skill-editor></app-skill-editor>
-
--->
-
-<app-employee-editor></app-employee-editor>
+<router-outlet></router-outlet>

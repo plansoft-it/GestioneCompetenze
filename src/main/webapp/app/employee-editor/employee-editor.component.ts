@@ -3,11 +3,11 @@ import { EMPLOYEES } from '../mock-employee';
 import { AREAS } from '../mock-area';
 import { SKILLS } from '../mock-skill';
 import { SKILLEMPS } from '../mock-skillEmp';
+import { LEVELS } from '../mock-level';
+import { Employee } from '../employee';
 import { Area } from '../area';
 import { Skill } from '../skill';
-import { Employee } from '../employee';
 import { Level } from '../level';
-import { LEVELS } from '../mock-level';
 
 @Component({
   selector: 'app-employee-editor',
@@ -23,11 +23,10 @@ export class EmployeeEditorComponent implements OnInit {
   skills = SKILLS;
   skillEmps = SKILLEMPS;
   levels = LEVELS;
-  tempSkills: number[];
   editEmp=false;
   addingSkill=false;
-  selectedArea: any;
-  selectedSkill: any;
+  selectedArea;
+  selectedSkill;
 
   constructor() { }
 
@@ -36,60 +35,53 @@ export class EmployeeEditorComponent implements OnInit {
   }
 
   getEmployee(): void {
-    const id = 1;
     /*
     const id = +this.route.snapshot.paramMap.get('id');
     this.employeeService.getEmployee(id)
       .subscribe(employee => this.employee = employee);
     */
+    const id = 1;  //temporaneo
     this.employee = this.employees[id-1];
   }
 
-  getAreas(event: any): Area[] {
-    this.tempSkills = [];
-    var tempAreas = [];
-    var i=0;
-    let emp = event;
+  getAreas(): Area[] {
+    var tempSkills: number[] = [];
+    var skillArea: number[] = [];
+    var tempAreas: Area[] = [];
+    let idEmp = this.employee.id;
     for(let skillEmp in this.skillEmps) {
-      if(emp == this.skillEmps[skillEmp].idEmp) {
-        this.tempSkills[i]=this.skillEmps[skillEmp].idSkill;
-        i++;
+      if(idEmp == this.skillEmps[skillEmp].idEmp) {
+        tempSkills.push(parseInt(''+this.skillEmps[skillEmp].idSkill));
       }
     }
-    let skillArea: number[];
-    skillArea = [];
-    i=0;
     for(let skill in this.skills) {
-      if(this.tempSkills.includes(this.skills[skill].id)) {
-        skillArea[i]=this.skills[skill].idArea;
-        i++;
+      if(tempSkills.includes(this.skills[skill].id)) {
+        skillArea.push(this.skills[skill].idArea);
       }
     }
-    i=0;
     for(let tempArea in this.areas) {
       if(skillArea.includes(this.areas[tempArea].id)){
-        if(true) {
-          tempAreas[i]=this.areas[tempArea];
-          i++;
+        if(!tempAreas.includes(this.areas[tempArea])) {
+          tempAreas.push(this.areas[tempArea]);
         }
       }
     }
     return tempAreas;
   }
 
-  getSkills(area: any, employee: number): Skill[] {
+  getSkills(area: any): Skill[] {
     var EmpSkills = [];
-    this.tempSkills = [];
+    var tempSkills: number[] = [];
     let areaTarget = area;
-    let emp = employee;
+    let emp = this.employee.id;
     for(let skillEmp in this.skillEmps) {
       if(emp == this.skillEmps[skillEmp].idEmp) {
-        this.tempSkills.push(this.skillEmps[skillEmp].idSkill);
+        tempSkills.push(this.skillEmps[skillEmp].idSkill);
       }
     }
-    for (let skill in this.tempSkills){
+    for (let skill in tempSkills){
       for (let temp in this.skills) {
-        if((this.tempSkills[skill] == (this.skills[temp].id) && this.skills[temp].idArea == areaTarget) || (this.tempSkills[skill] == 0)) {
+        if((tempSkills[skill] == (this.skills[temp].id) && this.skills[temp].idArea == areaTarget) || (tempSkills[skill] == 0)) {
           if(!EmpSkills.includes(this.skills[temp])){
             EmpSkills.push(this.skills[temp]);
           }
@@ -99,22 +91,22 @@ export class EmployeeEditorComponent implements OnInit {
     return EmpSkills;
   }
 
-  deleteSkill(employee: number, skill: Skill): void {
+  deleteSkill(skill: Skill): void {
     if(confirm("Stai per cancellare la competenza "+skill.description+" a "+this.employee.name)){
       var i=0;
       for(let skillEmp in this.skillEmps) {
         i++;
-        if(this.skillEmps[skillEmp].idEmp == employee && this.skillEmps[skillEmp].idSkill == skill.id){
+        if(this.skillEmps[skillEmp].idEmp == this.employee.id && this.skillEmps[skillEmp].idSkill == skill.id){
           this.skillEmps.splice(i-1, 1);
         }
       }
     }
   }
 
-  modifyLevel(modification: string, skillId: number, employee: number): void {
+  modifyLevel(modification: string, skillId: number): void {
     if(modification == "+"){
       for(let skillEmp in this.skillEmps) {
-        if(this.skillEmps[skillEmp].idEmp == employee && this.skillEmps[skillEmp].idSkill == skillId){
+        if(this.skillEmps[skillEmp].idEmp == this.employee.id && this.skillEmps[skillEmp].idSkill == skillId){
           if(this.skillEmps[skillEmp].idLevel < 3)
             this.skillEmps[skillEmp].idLevel++;
           else
@@ -123,7 +115,7 @@ export class EmployeeEditorComponent implements OnInit {
       }
     }else{
       for(let skillEmp in this.skillEmps) {
-        if(this.skillEmps[skillEmp].idEmp == employee && this.skillEmps[skillEmp].idSkill == skillId){
+        if(this.skillEmps[skillEmp].idEmp == this.employee.id && this.skillEmps[skillEmp].idSkill == skillId){
           if(this.skillEmps[skillEmp].idLevel > 1)
             this.skillEmps[skillEmp].idLevel--;
           else
@@ -133,12 +125,12 @@ export class EmployeeEditorComponent implements OnInit {
     }
   }
 
-  getLevel(employee: number, skill: number): Level {
+  getLevel(skill: number): Level {
     var idlevel
     var level
 
     for(let skillEmp in this.skillEmps){
-      if(employee == this.skillEmps[skillEmp].idEmp){
+      if(this.employee.id == this.skillEmps[skillEmp].idEmp){
         if(skill == this.skillEmps[skillEmp].idSkill){
           idlevel = this.skillEmps[skillEmp].idLevel;
         }
@@ -152,30 +144,28 @@ export class EmployeeEditorComponent implements OnInit {
     }
     return level;
   }
-  
-  addSkill(event: any): void {
-    alert("Skill " + event + " added");
+
+  addSkillToEmployee(skillId: number): void {
+    this.skillEmps.push({idEmp: this.employee.id, idSkill: skillId, idLevel: 1});
+    this.selectedArea = null;
+    this.selectedSkill = null;
   }
 
-  addSkillToEmployee(employee: any, skillId: any): void {
-    this.skillEmps.push({idEmp: employee, idSkill: skillId, idLevel: 1});
-  }
-
-  getAllSkillsArea(event: any): Skill[] {
+  getAllSkillsArea(idArea: number): Skill[] {
     var skillsArea: Skill[] = [];
     for(let skill in this.skills) {
-      if(this.skills[skill].idArea == event) {
+      if(this.skills[skill].idArea == idArea) {
         skillsArea.push(this.skills[skill]);
       }
     }
     return skillsArea;
   }
 
-  getAvailableSkillsEmployeeForArea(employee: any, area: any): Skill[] {
+  getAvailableSkillsEmployeeForArea(area: any): Skill[] {
     var skillsArea: Skill[] = [];
     var temp: number[] = [];
     for(let skillEmp in this.skillEmps){
-      if(this.skillEmps[skillEmp].idEmp == employee) {
+      if(this.skillEmps[skillEmp].idEmp == this.employee.id) {
         temp.push(this.skillEmps[skillEmp].idSkill)
       }
     }
@@ -187,5 +177,3 @@ export class EmployeeEditorComponent implements OnInit {
     return skillsArea;
     }
 }
-
-//!this.tempAreas.id == this.areas[tempArea].id
