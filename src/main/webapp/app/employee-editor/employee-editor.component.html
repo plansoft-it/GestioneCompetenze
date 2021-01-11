@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+
+<ng-container *ngIf="!editEmp; else edit">
+    <td><h2>Gestisci {{employee.name}} {{employee.surname}}</h2></td>
+    <td><button class="myButton" title="Modify Employee" (click)="editEmp=true"><i class="fas fa-user-edit"></i></button></td>
+</ng-container>
+<ng-template #edit>
+    <td><h2>Modifica <input class="title" [(ngModel)]="employee.name"> <input class="title" [(ngModel)]="employee.surname"></h2></td>
+    <td><button class="myButton" title="Save" (click)="editEmp=false"><i class="fas fa-save"></i></button></td>
+</ng-template>
+
+<div>
+    <ul *ngFor="let area of getAreas()">
+        <li>{{area.description}}</li>
+        <ul style="list-style-type: none" *ngFor="let skill of getSkills(area.id)">
+            <table>
+                <li>
+                    <tr>
+                        <td><button class="myButton" title="Delete skill" (click)="deleteSkill(skill)"><i class="fas fa-trash-alt"></i></button></td>
+                        <td class="description">{{skill.description}}</td>
+                        <td><button>{{getLevel(skill.id).description}}</button></td>
+                        <td><button class="myButton" title="Increase Level" (click)="modifyLevel('+', skill.id)"><i class="fas fa-plus"></i></button>
+                        <button class="myButton" title="Decrease Level" (click)="modifyLevel('-', skill.id)"><i class="fas fa-minus"></i></button></td>
+                    </tr>
+                </li>
+            </table>
+        </ul>
+    </ul>
+    <ng-container *ngIf="addingSkill; else notAddingSkill">
+        <table>
+            <tr>
+                <td>Area:</td>
+                <td *ngIf="selectedArea">Competenza:</td>
+            </tr>
+            <tr>
+                <td><select [(ngModel)]="selectedArea">
+                    <option disabled selected>Seleziona Area</option>
+                    <option *ngFor="let area of areas" value="{{area.id}}">{{area.description}}</option>
+                </select></td>
+                <td><select *ngIf="selectedArea" [(ngModel)]="selectedSkill">
+                    <option disabled selected>Seleziona Competenza</option>
+                    <option *ngFor="let skillArea of getAvailableSkillsEmployeeForArea(selectedArea)" value="{{skillArea.id}}">{{skillArea.description}}</option>
+                </select></td> 
+                <td><button class="myButton" title="Submit" (click)="addSkillToEmployee(selectedSkill); addingSkill=false"><i class="fas fa-save"></i></button></td>
+            </tr>
+        </table>
+            </ng-container>
+    <ng-template #notAddingSkill>
+        <label>Aggiungi una nuova competenza a {{employee.name}} </label>
+        <button class="myButton" title="Add Skill" (click)="addingSkill=true"><i class="fas fa-plus"></i></button>
+    </ng-template>
+</div>

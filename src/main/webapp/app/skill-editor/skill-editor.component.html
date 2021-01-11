@@ -1,0 +1,66 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+
+
+
+<h2>Gestisci Aree e Competenze</h2>
+
+<div>
+    <table>
+        <tr>
+            <ng-container *ngIf="selectedArea.id != 0; else spacerTemplate">
+                <td><button class="myButton" title="Delete Area" (click)="deleteArea()"><i class="fas fa-trash-alt"></i></button></td>
+            </ng-container>
+            <ng-template #spacerTemplate>
+                <td width="32px"></td>
+            </ng-template>
+            <td><select (change)="setSelectedArea($event.target.value)">
+                <option disabled selected>Seleziona Area</option>
+                <option *ngFor="let area of areas" value="{{area.id}}">{{area.description}}</option>
+            </select></td>
+            <ng-container *ngIf="editingAreaName; else notEditingAreaName">
+                <td><input type="text" [(ngModel)]="selectedArea.description"></td>
+                <td><button class="myButton" title="Save" (click)="editingAreaName=false"><i class="fas fa-save"></i></button></td>
+            </ng-container>
+            <ng-template #notEditingAreaName>
+                <ng-container *ngIf="selectedArea.id != 0">
+                    <td><button class="myButton" title="Edit Area Name" (click)="editingAreaName=true"><i class="fas fa-edit"></i></button></td> 
+                </ng-container>
+            </ng-template>
+            <ng-container *ngIf="addingArea; else notAddingArea">
+                <td><input type="text" placeholder="New Area Name" [(ngModel)]="newAreaName"></td>
+                <td><button class="myButton" title="Save" (click)="addNewArea(); addingArea=false"><i class="fas fa-save"></i></button></td>
+            </ng-container>
+            <ng-template #notAddingArea>
+                <td><button class="myButton" title="Add Skill" (click)="addingArea=true"><i class="fas fa-plus"></i></button></td> 
+            </ng-template> 
+        </tr>
+    </table>
+    <table>
+        <ul style="list-style-type: none" *ngFor="let skill of getAllSkillsArea(selectedArea)">
+            <li>
+                <tr>
+                    <td><button class="myButton" title="Delete skill" (click)="deleteSkill(skill)"><i class="fas fa-trash-alt"></i></button></td>
+                    <ng-container *ngIf="editingSkillName && editId == skill.id; else notEditingSkillName">
+                        <input type="text" [(ngModel)]="skill.description">
+                        <td><button class="myButton" title="Save" (click)="editingSkillName=false"><i class="fas fa-save"></i></button></td>
+                    </ng-container>
+                    <ng-template #notEditingSkillName>
+                        <td class="description">{{skill.description}}</td>
+                        <td><button class="myButton" title="Edit Skill Name" (click)="editingSkillName=true; editId=skill.id"><i class="fas fa-edit"></i></button></td>
+                    </ng-template>
+                </tr>
+            </li>
+        </ul>
+        
+    </table>
+    <ng-container *ngIf="addingSkill; else notAddingSkill">
+        <td><input type="text" placeholder="New Skill Name" [(ngModel)]="newSkillName"></td>
+        <td><button class="myButton" title="Save" (click)="addNewSkill(); addingSkill=false"><i class="fas fa-save"></i></button></td>
+    </ng-container>
+    <ng-template #notAddingSkill>
+        <ng-container *ngIf="selectedArea.id != 0">
+            <label>Aggiungi una nuova competenza a {{selectedArea.description}} </label>
+            <button class="myButton" title="Add Skill" (click)="addingSkill=true"><i class="fas fa-plus"></i></button>
+        </ng-container>
+    </ng-template>
+</div>
