@@ -27,15 +27,15 @@ export class DipendentiComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getEmployee();
+    this.getEmployeeObservable();
 
   }
 
-  getEmployee(): void {
+  getEmployeeObservable(): void {
     const id = +this.route.snapshot.paramMap.get('id');  //route.snapshot is a static image of the route information shortly after the component was created.
                                                          // aramMap is a dictionary of route parameter values extracted from the URL. The "id" key returns the id of the employee to fetch.  
 
-    this.userIdService.getEmployee(id)
+    this.userIdService.getEmployeeObservable(id)
       .subscribe(employee => this.employee = employee);
   }
 }

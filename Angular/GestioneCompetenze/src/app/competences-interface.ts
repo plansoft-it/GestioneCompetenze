@@ -1,5 +1,6 @@
 export interface Competenze {
-    areaName: string;
-    id?: number;
-    competencesForArea:{nameCompetence:string} []    
+    compName: string;
+    id: number;
+    idArea: number;
+    
 }

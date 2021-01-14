@@ -15,7 +15,7 @@
     <input [(ngModel)]="searchedValue" type="text">
 
 
-    
+
 
     <ul>
         <ng-container *ngFor="let emp of employees; let i=index">
@@ -32,12 +32,14 @@
                         <span>{{emp.userSurname}} :</span>
                     </a>
 
-                    <div *ngFor="let competenze of emp.competenceUser ">
-                        <br>
-                        Area di Competenza: <span>{{competenze.nameComp}}</span>
 
-                        <br>
+                    <div *ngFor="let comp of getSkills(emp) ">
+                        <ul>
+                            <li>
+                                <span>{{comp.compName}}</span>
+                            </li>
 
+                        </ul>
 
                     </div>
 
@@ -60,37 +62,43 @@
 
     <input [(ngModel)]="searchedValue" type="text">
 
- 
+
 
     <ul>
-     
-        
-        <ng-container *ngFor="let empCompetence of competences; let i=index">
-            <ng-container *ngIf="(checkAreaName(selectedOption, empCompetence , searchedValue)) || (checkAreaCompetence(selectedOption, empCompetence, searchedValue.toLocaleLowerCase(), i )) ">
-            <li>
-                <!-- Sempre solito problema dell' iterazione del array all'interno-->
-
-                <a routerLink="/areas/{{empCompetence.id}}">
-                    <!-- Da aggiungere gli id-->
-                    <span>{{empCompetence.areaName}} :</span>
-                </a>
-
-                
-
-                <div *ngFor="let competenze of empCompetence.competencesForArea">
-                    
-                    <br>
-                    Area di Competenza: <span>{{competenze.nameCompetence}}</span>
-
-                    <br>
 
 
-                </div>
-                <hr>
-            </li>
+
+        <ng-container *ngFor="let area of areas; let i=index">
+            <ng-container
+                *ngIf="(checkAreaName(selectedOption, area , searchedValue)) || (checkAreaCompetence(selectedOption, area, searchedValue.toLocaleLowerCase())) ">
+
+                <li>
+                    <!-- Sempre solito problema dell' iterazione del array all'interno-->
+
+                    <a routerLink="/areas/{{area.id}}">
+                        <!-- Da aggiungere gli id-->
+                        <span>{{area.description}} :</span>
+                    </a>
+
+
+
+                    <div *ngFor="let comp of getAreaSkills(area)">
+                        <ul>
+                            <li>
+                                <span>{{comp.compName}}</span>
+                            </li>
+                           
+                        </ul>
+
+                    </div>
+
+                    <hr>
+                </li>
+            </ng-container>
         </ng-container>
-    </ng-container>
-            
+
+
+
 
 
 

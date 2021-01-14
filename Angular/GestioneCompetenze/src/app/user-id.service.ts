@@ -1,9 +1,11 @@
 import { DIPENDENTI } from './lista-fittizia';
-import { COMPETENZE } from './lista-comp-fittizzia';
+import { COMPETENZE } from './lista-comp-fittizia';
 import { Dipendente } from './dipendenti-inteface';
 import { Competenze } from './competences-interface';
 import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { AREAS } from './lista-area-fittizia';
+import { Area } from './area-interface';
 
 @Injectable({
   providedIn: 'root'
@@ -12,24 +14,34 @@ export class UserIdService {
 
   constructor() { }
 
-  getEmployees(): Observable<Dipendente[]> { //Ritorna un Observables con l'array dei dipendenti
+  getEmployeesObservable(): Observable<Dipendente[]> { //Ritorna un Observables con l'array dei dipendenti
     return of(DIPENDENTI);
   }
 
-  getEmployee(id: number): Observable<Dipendente> {
+  getEmployeeObservable(id: number): Observable<Dipendente> {
 
     return of(DIPENDENTI.find(employee => employee.id == id));
   }
 
-  getCompetences(): Observable<Competenze[]> { //Ritorna un Observables con l'array dei dipendenti
+  getCompetencesObservable(): Observable<Competenze[]> { //Ritorna un Observables con l'array dei dipendenti
     return of(COMPETENZE);
   }
 
-  getCompetence(id: number): Observable<Competenze> {
+  getCompetenceObservable(id: number): Observable<Competenze> { // DA CAMBIARE
 
     return of(COMPETENZE.find(area => area.id == id));
   }
 
+  getAreasObservable(): Observable<Area[]> {
+
+    return of(AREAS);
+  }
+
+
+  getAreaObservable(id: number): Observable<Area> {
+
+    return of(AREAS.find(area => area.id == id));
+  }
 
 
 }
