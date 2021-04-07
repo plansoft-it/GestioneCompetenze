@@ -1,0 +1,107 @@
+<h3>Visualizza</h3>
+
+<button (click)="showEmployees()">Dipendenti</button> &nbsp; <button (click)="showCompetences()">Competenze</button>
+
+
+<div *ngIf="checkShowEmployees==true">
+    Filtra per:
+    <select [(ngModel)]="selectedOption" name="first">
+        <option value="name">Nome</option>
+        <option value="surname">Cognome</option>
+        <option value="knownCompetences">Competenze</option>
+
+    </select>
+
+    <input [(ngModel)]="searchedValue" type="text">
+
+
+
+
+    <ul>
+        <ng-container *ngFor="let emp of employees; let i=index">
+            <ng-container
+                *ngIf="(checkNameSurname(selectedOption,emp,searchedValue) ) || (checkCompetence(selectedOption, emp , searchedValue.toLocaleLowerCase(), i))">
+                <!-- TODO trasformarli in una funzione, also la seconda condizione non funziona-->
+
+                <li>
+
+
+                    <a routerLink="/employees/{{emp.id}}">
+                        <!-- Da aggiungere gli id-->
+                        <span>{{emp.userName}} </span>
+                        <span>{{emp.userSurname}} :</span>
+                    </a>
+
+
+                    <div *ngFor="let comp of getSkills(emp) ">
+                        <ul>
+                            <li>
+                                <span>{{comp.compName}}</span>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+                    <hr>
+                </li>
+            </ng-container>
+        </ng-container>
+    </ul>
+
+</div>
+
+<div *ngIf="checkShowCompetences==true; ">
+    Filtra per:
+    <select [(ngModel)]="selectedOption" name="first">
+        <option value="name">Nome Area</option>
+        <option value="competencesInArea">Nome Competenze </option>
+
+    </select>
+
+    <input [(ngModel)]="searchedValue" type="text">
+
+
+
+    <ul>
+
+
+
+        <ng-container *ngFor="let area of areas; let i=index">
+            <ng-container
+                *ngIf="(checkAreaName(selectedOption, area , searchedValue)) || (checkAreaCompetence(selectedOption, area, searchedValue.toLocaleLowerCase())) ">
+
+                <li>
+                    <!-- Sempre solito problema dell' iterazione del array all'interno-->
+
+                    <a routerLink="/areas/{{area.id}}">
+                        <!-- Da aggiungere gli id-->
+                        <span>{{area.description}} :</span>
+                    </a>
+
+
+
+                    <div *ngFor="let comp of getAreaSkills(area)">
+                        <ul>
+                            <li>
+                                <span>{{comp.compName}}</span>
+                            </li>
+                           
+                        </ul>
+
+                    </div>
+
+                    <hr>
+                </li>
+            </ng-container>
+        </ng-container>
+
+
+
+
+
+
+    </ul>
+
+</div>

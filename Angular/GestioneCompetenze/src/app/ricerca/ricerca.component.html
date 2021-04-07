@@ -1,0 +1,12 @@
+<p>ricerca works!</p>
+
+<select [(ngModel)]="selectedOption" id="firstChoice">
+    <option value="name">Nome</option>
+    <option value="competenza">Competenza</option>
+    <option value="competenzaLivello">Competenza e Livello</option>
+
+</select>
+
+<button (click)="selectFilter()">Qui</button>
+<p>Selected option: {{ selectedOption }}</p>
+<p>Button output: {{ printedOption }}</p>
